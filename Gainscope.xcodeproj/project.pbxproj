@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		36E112F21D2F1B6E00545BE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E112F11D2F1B6E00545BE0 /* AppDelegate.swift */; };
+		36E112F41D2F1B6E00545BE0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E112F31D2F1B6E00545BE0 /* ViewController.swift */; };
+		36E112F71D2F1B6E00545BE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36E112F51D2F1B6E00545BE0 /* Main.storyboard */; };
+		36E112F91D2F1B6E00545BE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36E112F81D2F1B6E00545BE0 /* Assets.xcassets */; };
+		36E112FC1D2F1B6E00545BE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36E112FA1D2F1B6E00545BE0 /* LaunchScreen.storyboard */; };
+		36E113071D2F1B6E00545BE0 /* GainscopeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E113061D2F1B6E00545BE0 /* GainscopeTests.swift */; };
+		36E113121D2F1B6E00545BE0 /* GainscopeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E113111D2F1B6E00545BE0 /* GainscopeUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		36E113031D2F1B6E00545BE0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 36E112E61D2F1B6E00545BE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36E112ED1D2F1B6E00545BE0;
+			remoteInfo = Gainscope;
+		};
+		36E1130E1D2F1B6E00545BE0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 36E112E61D2F1B6E00545BE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36E112ED1D2F1B6E00545BE0;
+			remoteInfo = Gainscope;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		36E112EE1D2F1B6E00545BE0 /* Gainscope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gainscope.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		36E112F11D2F1B6E00545BE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		36E112F31D2F1B6E00545BE0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		36E112F61D2F1B6E00545BE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		36E112F81D2F1B6E00545BE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		36E112FB1D2F1B6E00545BE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		36E112FD1D2F1B6E00545BE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36E113021D2F1B6E00545BE0 /* GainscopeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GainscopeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		36E113061D2F1B6E00545BE0 /* GainscopeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GainscopeTests.swift; sourceTree = "<group>"; };
+		36E113081D2F1B6E00545BE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36E1130D1D2F1B6E00545BE0 /* GainscopeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GainscopeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		36E113111D2F1B6E00545BE0 /* GainscopeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GainscopeUITests.swift; sourceTree = "<group>"; };
+		36E113131D2F1B6E00545BE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		36E112EB1D2F1B6E00545BE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36E112FF1D2F1B6E00545BE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36E1130A1D2F1B6E00545BE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		36E112E51D2F1B6E00545BE0 = {
+			isa = PBXGroup;
+			children = (
+				36E112F01D2F1B6E00545BE0 /* Gainscope */,
+				36E113051D2F1B6E00545BE0 /* GainscopeTests */,
+				36E113101D2F1B6E00545BE0 /* GainscopeUITests */,
+				36E112EF1D2F1B6E00545BE0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		36E112EF1D2F1B6E00545BE0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				36E112EE1D2F1B6E00545BE0 /* Gainscope.app */,
+				36E113021D2F1B6E00545BE0 /* GainscopeTests.xctest */,
+				36E1130D1D2F1B6E00545BE0 /* GainscopeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		36E112F01D2F1B6E00545BE0 /* Gainscope */ = {
+			isa = PBXGroup;
+			children = (
+				36E112F11D2F1B6E00545BE0 /* AppDelegate.swift */,
+				36E112F31D2F1B6E00545BE0 /* ViewController.swift */,
+				36E112F51D2F1B6E00545BE0 /* Main.storyboard */,
+				36E112F81D2F1B6E00545BE0 /* Assets.xcassets */,
+				36E112FA1D2F1B6E00545BE0 /* LaunchScreen.storyboard */,
+				36E112FD1D2F1B6E00545BE0 /* Info.plist */,
+			);
+			path = Gainscope;
+			sourceTree = "<group>";
+		};
+		36E113051D2F1B6E00545BE0 /* GainscopeTests */ = {
+			isa = PBXGroup;
+			children = (
+				36E113061D2F1B6E00545BE0 /* GainscopeTests.swift */,
+				36E113081D2F1B6E00545BE0 /* Info.plist */,
+			);
+			path = GainscopeTests;
+			sourceTree = "<group>";
+		};
+		36E113101D2F1B6E00545BE0 /* GainscopeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				36E113111D2F1B6E00545BE0 /* GainscopeUITests.swift */,
+				36E113131D2F1B6E00545BE0 /* Info.plist */,
+			);
+			path = GainscopeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		36E112ED1D2F1B6E00545BE0 /* Gainscope */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 36E113161D2F1B6E00545BE0 /* Build configuration list for PBXNativeTarget "Gainscope" */;
+			buildPhases = (
+				36E112EA1D2F1B6E00545BE0 /* Sources */,
+				36E112EB1D2F1B6E00545BE0 /* Frameworks */,
+				36E112EC1D2F1B6E00545BE0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Gainscope;
+			productName = Gainscope;
+			productReference = 36E112EE1D2F1B6E00545BE0 /* Gainscope.app */;
+			productType = "com.apple.product-type.application";
+		};
+		36E113011D2F1B6E00545BE0 /* GainscopeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 36E113191D2F1B6E00545BE0 /* Build configuration list for PBXNativeTarget "GainscopeTests" */;
+			buildPhases = (
+				36E112FE1D2F1B6E00545BE0 /* Sources */,
+				36E112FF1D2F1B6E00545BE0 /* Frameworks */,
+				36E113001D2F1B6E00545BE0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				36E113041D2F1B6E00545BE0 /* PBXTargetDependency */,
+			);
+			name = GainscopeTests;
+			productName = GainscopeTests;
+			productReference = 36E113021D2F1B6E00545BE0 /* GainscopeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		36E1130C1D2F1B6E00545BE0 /* GainscopeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 36E1131C1D2F1B6E00545BE0 /* Build configuration list for PBXNativeTarget "GainscopeUITests" */;
+			buildPhases = (
+				36E113091D2F1B6E00545BE0 /* Sources */,
+				36E1130A1D2F1B6E00545BE0 /* Frameworks */,
+				36E1130B1D2F1B6E00545BE0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				36E1130F1D2F1B6E00545BE0 /* PBXTargetDependency */,
+			);
+			name = GainscopeUITests;
+			productName = GainscopeUITests;
+			productReference = 36E1130D1D2F1B6E00545BE0 /* GainscopeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		36E112E61D2F1B6E00545BE0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Angert;
+				TargetAttributes = {
+					36E112ED1D2F1B6E00545BE0 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					36E113011D2F1B6E00545BE0 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 36E112ED1D2F1B6E00545BE0;
+					};
+					36E1130C1D2F1B6E00545BE0 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 36E112ED1D2F1B6E00545BE0;
+					};
+				};
+			};
+			buildConfigurationList = 36E112E91D2F1B6E00545BE0 /* Build configuration list for PBXProject "Gainscope" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 36E112E51D2F1B6E00545BE0;
+			productRefGroup = 36E112EF1D2F1B6E00545BE0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				36E112ED1D2F1B6E00545BE0 /* Gainscope */,
+				36E113011D2F1B6E00545BE0 /* GainscopeTests */,
+				36E1130C1D2F1B6E00545BE0 /* GainscopeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		36E112EC1D2F1B6E00545BE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36E112FC1D2F1B6E00545BE0 /* LaunchScreen.storyboard in Resources */,
+				36E112F91D2F1B6E00545BE0 /* Assets.xcassets in Resources */,
+				36E112F71D2F1B6E00545BE0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36E113001D2F1B6E00545BE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36E1130B1D2F1B6E00545BE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		36E112EA1D2F1B6E00545BE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36E112F41D2F1B6E00545BE0 /* ViewController.swift in Sources */,
+				36E112F21D2F1B6E00545BE0 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36E112FE1D2F1B6E00545BE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36E113071D2F1B6E00545BE0 /* GainscopeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36E113091D2F1B6E00545BE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36E113121D2F1B6E00545BE0 /* GainscopeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		36E113041D2F1B6E00545BE0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36E112ED1D2F1B6E00545BE0 /* Gainscope */;
+			targetProxy = 36E113031D2F1B6E00545BE0 /* PBXContainerItemProxy */;
+		};
+		36E1130F1D2F1B6E00545BE0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36E112ED1D2F1B6E00545BE0 /* Gainscope */;
+			targetProxy = 36E1130E1D2F1B6E00545BE0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		36E112F51D2F1B6E00545BE0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				36E112F61D2F1B6E00545BE0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		36E112FA1D2F1B6E00545BE0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				36E112FB1D2F1B6E00545BE0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		36E113141D2F1B6E00545BE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		36E113151D2F1B6E00545BE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		36E113171D2F1B6E00545BE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Gainscope/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tangert.Gainscope;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		36E113181D2F1B6E00545BE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Gainscope/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tangert.Gainscope;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		36E1131A1D2F1B6E00545BE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GainscopeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tangert.GainscopeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gainscope.app/Gainscope";
+			};
+			name = Debug;
+		};
+		36E1131B1D2F1B6E00545BE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GainscopeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tangert.GainscopeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gainscope.app/Gainscope";
+			};
+			name = Release;
+		};
+		36E1131D1D2F1B6E00545BE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GainscopeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tangert.GainscopeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Gainscope;
+			};
+			name = Debug;
+		};
+		36E1131E1D2F1B6E00545BE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GainscopeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tangert.GainscopeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Gainscope;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		36E112E91D2F1B6E00545BE0 /* Build configuration list for PBXProject "Gainscope" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36E113141D2F1B6E00545BE0 /* Debug */,
+				36E113151D2F1B6E00545BE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		36E113161D2F1B6E00545BE0 /* Build configuration list for PBXNativeTarget "Gainscope" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36E113171D2F1B6E00545BE0 /* Debug */,
+				36E113181D2F1B6E00545BE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		36E113191D2F1B6E00545BE0 /* Build configuration list for PBXNativeTarget "GainscopeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36E1131A1D2F1B6E00545BE0 /* Debug */,
+				36E1131B1D2F1B6E00545BE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		36E1131C1D2F1B6E00545BE0 /* Build configuration list for PBXNativeTarget "GainscopeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36E1131D1D2F1B6E00545BE0 /* Debug */,
+				36E1131E1D2F1B6E00545BE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 36E112E61D2F1B6E00545BE0 /* Project object */;
+}
