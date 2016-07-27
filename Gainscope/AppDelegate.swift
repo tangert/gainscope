@@ -16,7 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        // To create from a Storyboard
+        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
+        
+        window?.makeKeyAndVisible()
+
         return true
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {
