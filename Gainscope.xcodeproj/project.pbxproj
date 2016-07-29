@@ -15,6 +15,7 @@
 		36600DA81D47BA3200FE4C53 /* PulleyPassthroughScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36600DA61D47BA3200FE4C53 /* PulleyPassthroughScrollView.swift */; };
 		36600DA91D47BA3200FE4C53 /* PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36600DA71D47BA3200FE4C53 /* PulleyViewController.swift */; };
 		36600DAC1D486E5900FE4C53 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36600DAB1D486E5900FE4C53 /* CustomCell.swift */; };
+		36600DB21D49066F00FE4C53 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36600DB11D49066F00FE4C53 /* DataManager.swift */; };
 		36850E9C1D3D2AE7006D4652 /* tidbits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36850E9B1D3D2AE7006D4652 /* tidbits.swift */; };
 		3693CEC71D381AB7002DD8A7 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693CEC61D381AB7002DD8A7 /* YelpClient.swift */; };
 		369942751D4696C300CA04B7 /* DrawerContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369942741D4696C300CA04B7 /* DrawerContentViewController.swift */; };
@@ -60,6 +61,7 @@
 		36600DA61D47BA3200FE4C53 /* PulleyPassthroughScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PulleyPassthroughScrollView.swift; path = "../../Pulley-master/PulleyLib/PulleyPassthroughScrollView.swift"; sourceTree = "<group>"; };
 		36600DA71D47BA3200FE4C53 /* PulleyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PulleyViewController.swift; path = "../../Pulley-master/PulleyLib/PulleyViewController.swift"; sourceTree = "<group>"; };
 		36600DAB1D486E5900FE4C53 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		36600DB11D49066F00FE4C53 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		36850E9B1D3D2AE7006D4652 /* tidbits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tidbits.swift; sourceTree = "<group>"; };
 		3693CEC61D381AB7002DD8A7 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		369942741D4696C300CA04B7 /* DrawerContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerContentViewController.swift; sourceTree = "<group>"; };
@@ -145,14 +147,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		361B5DD81D35782C00C9BCAA /* Custom Pins */ = {
-			isa = PBXGroup;
-			children = (
-				362E1F521D33F5720062B9CD /* CustomPointAnnotation.swift */,
-			);
-			name = "Custom Pins";
-			sourceTree = "<group>";
-		};
 		361B5DDB1D3581DF00C9BCAA /* Other files */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,10 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				361C26481D36D9650048B09B /* Reachability.swift */,
-				36600DAA1D47BA3B00FE4C53 /* Pulley */,
 				3630051D1D2F1D1100420D2D /* Yelp API */,
-				361B5DD81D35782C00C9BCAA /* Custom Pins */,
-				36600DAB1D486E5900FE4C53 /* CustomCell.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -207,6 +198,10 @@
 		363005231D2F1F6400420D2D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				36600DAA1D47BA3B00FE4C53 /* Pulley */,
+				362E1F521D33F5720062B9CD /* CustomPointAnnotation.swift */,
+				36600DAB1D486E5900FE4C53 /* CustomCell.swift */,
+				36600DB11D49066F00FE4C53 /* DataManager.swift */,
 				361C264A1D36D9A00048B09B /* PrimaryContentViewController.swift */,
 				369942741D4696C300CA04B7 /* DrawerContentViewController.swift */,
 			);
@@ -218,7 +213,6 @@
 			children = (
 				361C264C1D36D9F60048B09B /* Main.storyboard */,
 				36E112FA1D2F1B6E00545BE0 /* LaunchScreen.storyboard */,
-				36E112F81D2F1B6E00545BE0 /* Assets.xcassets */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -256,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				361B5DDC1D3581E800C9BCAA /* MVC */,
+				36E112F81D2F1B6E00545BE0 /* Assets.xcassets */,
 				36E112F11D2F1B6E00545BE0 /* AppDelegate.swift */,
 				3630051E1D2F1D3D00420D2D /* Helper Files */,
 				36E112FD1D2F1B6E00545BE0 /* Info.plist */,
@@ -570,6 +565,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				361C264B1D36D9A00048B09B /* PrimaryContentViewController.swift in Sources */,
+				36600DB21D49066F00FE4C53 /* DataManager.swift in Sources */,
 				3693CEC71D381AB7002DD8A7 /* YelpClient.swift in Sources */,
 				369942751D4696C300CA04B7 /* DrawerContentViewController.swift in Sources */,
 				36850E9C1D3D2AE7006D4652 /* tidbits.swift in Sources */,

@@ -19,7 +19,7 @@ import UIKit
     let reviewCount: NSNumber?
     let rating: NSNumber?
     let phone: String?
-    
+
     let coordinate: NSDictionary?
     let latitude: Double?
     let longitude: Double?

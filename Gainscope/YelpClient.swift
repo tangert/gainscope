@@ -42,14 +42,19 @@ class YelpClient: BDBOAuth1RequestOperationManager  {
         func searchWithTerm(term: String, completion: ([Business]!, NSError!) -> Void) -> AFHTTPRequestOperation {
             return searchWithTerm(term, sort: nil, categories: nil, deals: nil, completion: completion)
         }
-        
+    
+
+    
         func searchWithTerm(term: String, sort: YelpSortMode?, categories: [String]?, deals: Bool?, completion: ([Business]!, NSError!) -> Void) -> AFHTTPRequestOperation {
             // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
             
-            let lat = PrimaryContentViewController().locationManager.location?.coordinate.latitude
-            let long = PrimaryContentViewController().locationManager.location?.coordinate.longitude
+                
+            var lat = (PrimaryContentViewController().locationManager.location?.coordinate.latitude)!
+            var long = (PrimaryContentViewController().locationManager.location?.coordinate.longitude)!
+                
             
-            var parameters: [String : AnyObject] = ["term": term, "ll": "\(lat!),\(long!)"]
+            var parameters: [String : AnyObject] = ["term": term, "ll": "\(lat),\(long)"]
+            
             
             if sort != nil {
                 parameters["sort"] = sort!.rawValue
@@ -74,49 +79,5 @@ class YelpClient: BDBOAuth1RequestOperationManager  {
                     completion(nil, error)
             })!
         }
-    
-    /*
-    func searchWithTerm(parameters: [String: String], success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: ((AFHTTPRequestOperation?, NSError) -> Void)?) -> AFHTTPRequestOperation! {
-        // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
-        
-        return self.GET("search", parameters: parameters, success: success, failure: failure)
-    }*/
-    
-    /*
-     func searchWithTerm
-     (term: String, parameters: Dictionary<String, String>? = nil, offset: Int = 0, limit: Int = 20, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: ((AFHTTPRequestOperation?, NSError) -> Void)?) -> AFHTTPRequestOperation!
-     
-     {
-     var params: NSMutableDictionary =
-     [
-     "term": term,
-     "offset": offset,
-     "limit": limit
-     ]
-     
-     for (key, value) in parameters! {
-     params.setValue(value, forKey: key)
-     }
-     return self.GET("search", parameters: params, success: success, failure: failure)
-     }*/
-    
-    /*
- 
- class func searchWithTerm(term: String, completion: ([Business]!, NSError!) -> [(name: String?, address: String?, coordinate: CLLocationCoordinate2D?, distanceFromMe: Double?, imageURL: String?, rating: Double?, ratingImageURL: String?, phone: String?)]) {
- YelpClient.sharedInstance.searchWithTerm(term, completion: completion)
- }
- 
- class func searchWithTerm(term: String, sort: YelpSortMode?, categories: [String]?, deals: Bool?, completion: ([Business]!, NSError!) ->
- 
- [(name: String?, address: String?, coordinate: CLLocationCoordinate2D?, distanceFromMe: Double?, imageURL: String?, rating: Double?, ratingImageURL: String?, phone: String?)])
- 
- -> Void {
- 
- YelpClient.sharedInstance.searchWithTerm(term, sort: sort, categories: categories, deals: deals, completion: completion)
- }
- 
- */
- 
- 
 }
 

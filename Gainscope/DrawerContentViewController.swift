@@ -17,13 +17,11 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var gripperView: UIView!
     @IBOutlet weak var seperatorHeightConstraint: NSLayoutConstraint!
     
-    var listItems = [Business]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Tableview loaded")
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DrawerContentViewController.loadTableViewData(_:)) , name: "loadTableViewData", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DrawerContentViewController.updateTableViewData(_:)) , name: "updateTableViewData", object: nil)
         
         gripperView.layer.cornerRadius = 2.5
         seperatorHeightConstraint.constant = 1.0 / UIScreen.mainScreen().scale
@@ -31,17 +29,15 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         
-        print("List item count: \(self.listItems.count)")
+        print("List item count: \(DataManager.sharedInstance.listItems.count)")
         
     }
 
     
-    func loadTableViewData(notification: NSNotification) {
-        
-            //self.listItems = notification.object as! [Business]
-        self.listItems = PrimaryContentViewController.sharedInstance.listItems
-            self.tableView.reloadData()
-            print(listItems.count)
+    func updateTableViewData(notification: NSNotification) {
+       
+        self.tableView.reloadData()
+        print("Notfication from PrimaryView sent. ListItem Count: \(DataManager.sharedInstance.listItems.count)")
     }
         
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -54,20 +50,31 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return listItems.count
+        return DataManager.sharedInstance.listItems.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         print("Cell configuration is called.")
-        
+
         var cell:CustomCell? = tableView.dequeueReusableCellWithIdentifier("cell") as! CustomCell?
         
-        cell?.location.text = self.listItems[indexPath.row].name
-        cell?.address.text = self.listItems[indexPath.row].address
-        cell?.distance.text = self.listItems[indexPath.row].distance
+        cell?.location.text = DataManager.sharedInstance.listItems[indexPath.row].name!
+        cell?.address.text = DataManager.sharedInstance.listItems[indexPath.row].address!
+       
+        if let url = NSURL(string: (DataManager.sharedInstance.listItems[indexPath.row].imageURL?.absoluteString)!),
+            data = NSData(contentsOfURL: url)
+        {
+            cell?.companyImage.image = UIImage(data: data)
+            
+        } else {
+            
+            cell?.companyImage.image = nil
+            
+        }
         
-        cell?.companyImage.layer.cornerRadius = 20
+        cell?.companyImage.layer.cornerRadius = 10
+        cell?.companyImage.layer.masksToBounds = true
         
         return cell!
     }
@@ -93,6 +100,14 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
             searchBar.resignFirstResponder()
         }
     }
-
+    
+    // MARK: Search Bar delegate
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        
+        if let drawerVC = self.parentViewController as? PulleyViewController
+        {
+            drawerVC.setDrawerPosition(.Open, animated: true)
+        }
+    }
     
 }
