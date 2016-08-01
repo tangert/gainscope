@@ -38,10 +38,10 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
         
         let coffeeImage : UIImage = UIImage(named: "coffeeUnfilledGrey.png")!
         let gymsImage: UIImage = UIImage(named: "gymsUnfilledGrey.png")!
-        let gainsImage: UIImage = UIImage(named: "foodUnfilledGrey.png")!
+        let foodImage: UIImage = UIImage(named: "foodUnfilledGrey.png")!
         self.coffeeButton.setImage(coffeeImage, forState: .Normal)
         self.gymsButton.setImage(gymsImage, forState: .Normal)
-        self.gainsButton.setImage(gainsImage, forState: .Normal)
+        self.foodButton.setImage(foodImage, forState: .Normal)
         
         
         //map setup
@@ -106,10 +106,10 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
     
     //button and map initializations
     @IBOutlet weak var map: MKMapView!
-
+    
     @IBOutlet weak var coffeeButton: UIButton!
     @IBOutlet weak var gymsButton: UIButton!
-    @IBOutlet weak var gainsButton: UIButton!
+    @IBOutlet weak var foodButton: UIButton!
     @IBOutlet weak var buttonBackground: UIView!
 
     @IBOutlet weak var centerButton: UIButton!
@@ -119,9 +119,9 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
     
     enum Mode {
         case None
-        case Gym
         case Coffee
-        case Gains
+        case Gym
+        case Food
     }
     
     var mode = Mode.None
@@ -154,35 +154,43 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
     
     @IBAction func buttonPressed(sender: AnyObject) {
         
-    NSNotificationCenter.defaultCenter().postNotificationName("updateTableViewData", object: DataManager.sharedInstance.listItems)
-        
         if sender.tag == 1 && self.mode != .Coffee {
             removeMapPins()
+            DataManager.sharedInstance.removeItems()
+            
             createContent("coffee")
             
             //sets the selected button to the highlighted image with a spring animation
             animateButton(self.coffeeButton, filledImage: "coffeeButton.png")
             
             //sets the other two buttons to their default image
-            setDefaultImage(gymsButton, image1: "gymsUnfilledGrey.png", button2: gainsButton, image2: "foodUnfilledGrey.png")
+            setDefaultImage(gymsButton, image1: "gymsUnfilledGrey.png", button2: foodButton, image2: "foodUnfilledGrey.png")
             
             mode = .Coffee
         }
         
         if sender.tag == 2 && self.mode != .Gym{
+            
+            //clean all the data
             removeMapPins()
+            DataManager.sharedInstance.removeItems()
+            
             createContent("gym")
+            
             animateButton(self.gymsButton, filledImage: "gymsButton.png")
-            setDefaultImage(coffeeButton, image1: "coffeeUnfilledGrey.png", button2: gainsButton, image2: "foodUnfilledGrey.png")
+            setDefaultImage(coffeeButton, image1: "coffeeUnfilledGrey.png", button2: foodButton, image2: "foodUnfilledGrey.png")
             mode = .Gym
         }
         
-        if sender.tag == 3 && self.mode != .Gains{
+        if sender.tag == 3 && self.mode != .Food{
             removeMapPins()
+            DataManager.sharedInstance.removeItems()
+            
             createContent("food")
-            animateButton(self.gainsButton, filledImage: "foodButton.png")
+            
+            animateButton(self.foodButton, filledImage: "foodButton.png")
             setDefaultImage(coffeeButton, image1: "coffeeUnfilledGrey.png", button2: gymsButton, image2: "gymsUnfilledGrey.png")
-            mode = .Gains
+            mode = .Food
         }
     }
     
@@ -221,7 +229,7 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
                 for business in results {
                     
                     self.createMapPin(term, business: business)
-                    DataManager.sharedInstance.listItems.append(business)
+                    DataManager.sharedInstance.addItem(business)
                 
                 }
             })

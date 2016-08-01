@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 import NotificationCenter
+import MapKit
 
-class DrawerContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PulleyDrawerViewControllerDelegate, UISearchBarDelegate {
+class DrawerContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PulleyDrawerViewControllerDelegate, UISearchBarDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -35,8 +36,8 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
 
     
     func updateTableViewData(notification: NSNotification) {
-       
-        self.tableView.reloadData()
+       UIView.transitionWithView(self.tableView, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
+        //self.tableView.reloadData()
         print("Notfication from PrimaryView sent. ListItem Count: \(DataManager.sharedInstance.listItems.count)")
     }
         
@@ -44,8 +45,16 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         return 1
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 81.0
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 81.0
+//    }
+    
+    func calculateHeightForConfiguredSizingCell(cell: UITableViewCell) -> CGFloat
+    {
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        let height = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingExpandedSize).height + 1.0
+        return height
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,14 +64,14 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        print("Cell configuration is called.")
-
         var cell:CustomCell? = tableView.dequeueReusableCellWithIdentifier("cell") as! CustomCell?
         
-        cell?.location.text = DataManager.sharedInstance.listItems[indexPath.row].name!
-        cell?.address.text = DataManager.sharedInstance.listItems[indexPath.row].address!
+        
+        let data = DataManager.sharedInstance.listItems[indexPath.row]
+        
+        cell?.location.text = data.name!
        
-        if let url = NSURL(string: (DataManager.sharedInstance.listItems[indexPath.row].imageURL?.absoluteString)!),
+        if let url = NSURL(string: (data.imageURL?.absoluteString)!),
             data = NSData(contentsOfURL: url)
         {
             cell?.companyImage.image = UIImage(data: data)
@@ -75,7 +84,23 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         
         cell?.companyImage.layer.cornerRadius = 10
         cell?.companyImage.layer.masksToBounds = true
+                
+        let string = data.categories
         
+        print(data.categories)
+        if let range = string!.rangeOfString(",") {
+            print(string!.substringToIndex(range.startIndex))
+            cell?.categories.text = ("\(string!.substringToIndex(range.startIndex))  •  \(data.distance!)")
+            
+        } else {
+            cell?.categories.text = ("\(data.categories!)  •  \(data.distance!)")
+
+        }
+        
+        cell?.reviewCount.text = "\(data.reviewCount!) reviews"
+        cell?.rating.rating = data.rating as! Double
+        cell?.rating.settings.updateOnTouch = false
+
         return cell!
     }
     
@@ -100,6 +125,18 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
             searchBar.resignFirstResponder()
         }
     }
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        let placemark = MKPlacemark(coordinate: view.annotation!.coordinate, addressDictionary: nil)
+        
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = view.annotation!.title!
+        
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
+        mapItem.openInMapsWithLaunchOptions(launchOptions)
+    }
+
     
     // MARK: Search Bar delegate
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {

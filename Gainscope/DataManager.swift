@@ -7,11 +7,23 @@
 //
 
 import Foundation
+import NotificationCenter
 
 class DataManager {
     
+    //Singleton
     static let sharedInstance = DataManager()
     var listItems = [Business]()
+    
+    func addItem(item: Business) {
+        
+        self.listItems.append(item)
+    NSNotificationCenter.defaultCenter().postNotificationName("updateTableViewData", object: self.listItems)
+    }
+    
+    func removeItems() {
+        self.listItems.removeAll()
+    }
     
     
 }

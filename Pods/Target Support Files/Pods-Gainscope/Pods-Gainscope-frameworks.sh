@@ -86,6 +86,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
   install_framework "$BUILT_PRODUCTS_DIR/BDBOAuth1Manager/BDBOAuth1Manager.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Cosmos/Cosmos.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ElasticTransition/ElasticTransition.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MaterialKit/MaterialKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MotionAnimation/MotionAnimation.framework"
@@ -94,6 +95,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
   install_framework "$BUILT_PRODUCTS_DIR/BDBOAuth1Manager/BDBOAuth1Manager.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Cosmos/Cosmos.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ElasticTransition/ElasticTransition.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MaterialKit/MaterialKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MotionAnimation/MotionAnimation.framework"

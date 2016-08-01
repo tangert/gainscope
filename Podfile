@@ -23,6 +23,7 @@ pod 'AFNetworking', '~> 2.5'
 pod 'BDBOAuth1Manager'
 pod 'ElasticTransition', '~> 3.0.0'
 pod 'MaterialKit', '~> 0.4'
+pod 'Cosmos', '~> 1.2'
 pod 'SnapKit', '~> 0.15.0'
 
 end

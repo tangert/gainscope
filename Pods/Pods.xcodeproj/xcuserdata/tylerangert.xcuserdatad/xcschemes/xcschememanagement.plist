@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Cosmos.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ElasticTransition.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,6 +72,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>608B49B5DDACC601EE8044A1931993F9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>73850773DC05DB0F801C716B2A9E95F5</key>
 		<dict>
 			<key>primary</key>
@@ -77,17 +87,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>84885F32727D1B2A7357B90D0C6085B6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>AE6A4AC269D91F7FF73F67FEEEF0FC11</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CA96D52440AF4453C4DB54D491766017</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E6C81A8D1630F0FB1168410F294AA93A</key>
+		<key>BFA09A5737E540601A5C3FBF52C1593C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
