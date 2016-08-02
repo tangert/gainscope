@@ -2,11 +2,11 @@
 
 This is officially the first original iOS app I have built. It is a fitness-specialized map search that finds all the nearest coffee shops, gyms, and restaurants around you. It includes special pins for popular places like Starbucks, Dunkin Donuts, Crossfit gyms, the Y, Chipotle, etc.
 
-APIs used:
+Main APIs used:
 - Yelp
-- Uber
+- Uber (currently working)
 
-Cocoapods:
+#Cocoapods:
 #Networking
 - pod 'AFNetworking', '~> 2.5': HTTP networking 
 - pod 'BDBOAuth1Manager': OAuth manager
