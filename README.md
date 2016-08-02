@@ -4,7 +4,7 @@ This is officially the first original iOS app I have built. It is a fitness-spec
 
 Main APIs used:
 - Yelp
-- Uber (currently working)
+- Uber (currently working on)
 
 #Cocoapods:
 #Networking
