@@ -12,7 +12,6 @@
 		361B5DDA1D357D2B00C9BCAA /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B5DD91D357D2B00C9BCAA /* Business.swift */; };
 		361C26491D36D9650048B09B /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361C26481D36D9650048B09B /* Reachability.swift */; };
 		361C264B1D36D9A00048B09B /* PrimaryContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361C264A1D36D9A00048B09B /* PrimaryContentViewController.swift */; };
-		361C264E1D36D9F60048B09B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361C264C1D36D9F60048B09B /* Main.storyboard */; };
 		362E1F531D33F5720062B9CD /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362E1F521D33F5720062B9CD /* CustomPointAnnotation.swift */; };
 		36600DAC1D486E5900FE4C53 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36600DAB1D486E5900FE4C53 /* CustomCell.swift */; };
 		36600DB21D49066F00FE4C53 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36600DB11D49066F00FE4C53 /* DataManager.swift */; };
@@ -24,6 +23,7 @@
 		36E112FC1D2F1B6E00545BE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36E112FA1D2F1B6E00545BE0 /* LaunchScreen.storyboard */; };
 		36E113071D2F1B6E00545BE0 /* GainscopeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E113061D2F1B6E00545BE0 /* GainscopeTests.swift */; };
 		36E113121D2F1B6E00545BE0 /* GainscopeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E113111D2F1B6E00545BE0 /* GainscopeUITests.swift */; };
+		36E5FF5E1D50281400FD75B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36E5FF5D1D50281400FD75B4 /* Main.storyboard */; };
 		3856EFC90E907C59F6E890E8 /* Pods_GainscopeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1964604D9B61A9574C2B54 /* Pods_GainscopeTests.framework */; };
 		6C0D65A3B4C65F81EC346578 /* Pods_GainscopeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90943E8BE96123A4FDC6F979 /* Pods_GainscopeUITests.framework */; };
 		88216DED2AFCD0FA09E7A361 /* Pods_GainscopeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5984FD2EA53DB4BA1808A433 /* Pods_GainscopeTests.framework */; };
@@ -58,7 +58,6 @@
 		361B5DD91D357D2B00C9BCAA /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		361C26481D36D9650048B09B /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		361C264A1D36D9A00048B09B /* PrimaryContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryContentViewController.swift; sourceTree = "<group>"; };
-		361C264D1D36D9F60048B09B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../gainscope dev files/gainscope_old/gainscope/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		362E1F521D33F5720062B9CD /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		36600DAB1D486E5900FE4C53 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		36600DB11D49066F00FE4C53 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -76,6 +75,7 @@
 		36E1130D1D2F1B6E00545BE0 /* GainscopeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GainscopeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36E113111D2F1B6E00545BE0 /* GainscopeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GainscopeUITests.swift; sourceTree = "<group>"; };
 		36E113131D2F1B6E00545BE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36E5FF5D1D50281400FD75B4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3C1964604D9B61A9574C2B54 /* Pods_GainscopeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GainscopeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E66CA734C9F0B0F0EE8169E /* Pods-Gainscope.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gainscope.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gainscope/Pods-Gainscope.debug.xcconfig"; sourceTree = "<group>"; };
 		5984FD2EA53DB4BA1808A433 /* Pods_GainscopeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GainscopeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,8 +211,8 @@
 		363005241D2F1F7400420D2D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				361C264C1D36D9F60048B09B /* Main.storyboard */,
 				36E112FA1D2F1B6E00545BE0 /* LaunchScreen.storyboard */,
+				36E5FF5D1D50281400FD75B4 /* Main.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -416,7 +416,7 @@
 			files = (
 				36E112FC1D2F1B6E00545BE0 /* LaunchScreen.storyboard in Resources */,
 				36E112F91D2F1B6E00545BE0 /* Assets.xcassets in Resources */,
-				361C264E1D36D9F60048B09B /* Main.storyboard in Resources */,
+				36E5FF5E1D50281400FD75B4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,14 +611,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		361C264C1D36D9F60048B09B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				361C264D1D36D9F60048B09B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		36E112FA1D2F1B6E00545BE0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
