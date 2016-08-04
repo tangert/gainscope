@@ -48,13 +48,12 @@ class YelpClient: BDBOAuth1RequestOperationManager  {
         func searchWithTerm(term: String, sort: YelpSortMode?, categories: [String]?, deals: Bool?, completion: ([Business]!, NSError!) -> Void) -> AFHTTPRequestOperation {
             // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
             
-                
-            var lat = (PrimaryContentViewController().locationManager.location?.coordinate.latitude)!
-            var long = (PrimaryContentViewController().locationManager.location?.coordinate.longitude)!
-                
-            
-            var parameters: [String : AnyObject] = ["term": term, "ll": "\(lat),\(long)"]
-            
+            let userCoord = UserLocationManager.sharedManager.currentLocation?.coordinate
+            let lat = userCoord?.latitude
+            let long = userCoord?.longitude
+                        
+            //var parameters: [String : AnyObject] = ["term": term, "ll": "\(lat!),\(long!)"]
+            var parameters: [String : AnyObject] = ["term": term, "ll": "\(37.4419),\(122.1430)"]
             
             if sort != nil {
                 parameters["sort"] = sort!.rawValue

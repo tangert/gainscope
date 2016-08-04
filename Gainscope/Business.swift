@@ -15,7 +15,6 @@ import UIKit
     let imageURL: NSURL?
     let categories: String?
     let distance: String?
-    let ratingImageURL: NSURL?
     let reviewCount: NSNumber?
     let rating: NSNumber?
     let phone: String?
@@ -91,13 +90,6 @@ import UIKit
                 distance = String(format: "%.2f mi", milesPerMeter * distanceMeters!.doubleValue)
             } else {
                 distance = nil
-            }
- 
-        let ratingImageURLString = dictionary["rating_img_url_large"] as? String
-            if ratingImageURLString != nil {
-                ratingImageURL = NSURL(string: ratingImageURLString!)
-            } else {
-                ratingImageURL = nil
             }
  
         rating = dictionary["rating"] as? NSNumber

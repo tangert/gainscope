@@ -20,33 +20,30 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AsyncSwift (1.7.2)
   - BDBOAuth1Manager (1.6.0):
     - AFNetworking/NSURLConnection (~> 2.6.0)
     - AFNetworking/NSURLSession (~> 2.6.0)
   - Cosmos (1.2.3)
-  - ElasticTransition (3.0.1):
-    - MotionAnimation (~> 0.1.1)
-  - MaterialKit (0.4)
-  - MotionAnimation (0.1.1)
+  - Kingfisher (2.4.1)
   - SnapKit (0.15.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
+  - AsyncSwift
   - BDBOAuth1Manager
   - Cosmos (~> 1.2)
-  - ElasticTransition (~> 3.0.0)
-  - MaterialKit (~> 0.4)
+  - Kingfisher (~> 2.4)
   - SnapKit (~> 0.15.0)
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  AsyncSwift: 46a78bceb11f0e5bb52747f740d9692ec78d2d7c
   BDBOAuth1Manager: cd5a5872f355ca38180d52ca2dd844f0b0c84797
   Cosmos: efddd01b729956ad6335bc58bc92e5735a1d12a3
-  ElasticTransition: 231e60fa66f68f42129e7969736f4a9e69794f97
-  MaterialKit: 2e5267bcf410b82793f2b92d2111f8ae4ed2c3f2
-  MotionAnimation: ff356cfdbedcab52a5bfc94cc96ed44ea2f652e0
+  Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
 
-PODFILE CHECKSUM: 2c6efc70b1f7bbed6edc040624ace467da07ff01
+PODFILE CHECKSUM: aa479e66065aa2b195701828cdaa3c8bb5de730d
 
 COCOAPODS: 1.0.0

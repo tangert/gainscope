@@ -14,10 +14,7 @@ class CustomCell: UITableViewCell {
     
     @IBOutlet weak var companyImage: UIImageView!
     @IBOutlet weak var location: UILabel!
-    
-    @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var categories: UILabel!
-    
     @IBOutlet weak var rating: CosmosView!
     @IBOutlet weak var reviewCount: UILabel!
     

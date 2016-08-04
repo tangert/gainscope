@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AsyncSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>BDBOAuth1Manager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -19,17 +24,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ElasticTransition.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>MaterialKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>MotionAnimation.xcscheme</key>
+		<key>Kingfisher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -77,17 +72,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>73850773DC05DB0F801C716B2A9E95F5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7CAAB4AEB098D0E3D8522D5B093FB6E3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>84885F32727D1B2A7357B90D0C6085B6</key>
+		<key>9D9E88A9AD0DC7700B5D566E644D5B0D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,12 +82,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BFA09A5737E540601A5C3FBF52C1593C</key>
+		<key>D1DC35DB2C695031A72543555FB23729</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F28D60B0CC50AC866DDCE4811140455A</key>
+		<key>DD2365C9264EA17AA6F120789740A9A6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E96E13C4D3B5B5FC0651440734C2BF4D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

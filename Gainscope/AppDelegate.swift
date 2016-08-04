@@ -18,12 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
         // To create from a Storyboard
         window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
-        
         window?.makeKeyAndVisible()
-
         return true
         
     }

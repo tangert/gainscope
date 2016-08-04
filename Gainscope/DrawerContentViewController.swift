@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+import AFNetworking
+import Async
+import Kingfisher
 import NotificationCenter
 import MapKit
 
@@ -20,7 +23,6 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Tableview loaded")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DrawerContentViewController.updateTableViewData(_:)) , name: "updateTableViewData", object: nil)
         
@@ -30,24 +32,28 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         
-        print("List item count: \(DataManager.sharedInstance.listItems.count)")
-        
     }
-
     
+    var cellConditional = ""
     func updateTableViewData(notification: NSNotification) {
-       UIView.transitionWithView(self.tableView, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
-        //self.tableView.reloadData()
-        print("Notfication from PrimaryView sent. ListItem Count: \(DataManager.sharedInstance.listItems.count)")
+        
+        if notification.object?.name == "coffeeList" {
+            self.cellConditional = "coffeeList"
+        }
+        else if notification.object?.name == "gymsList" {
+            self.cellConditional = "gymsList"
+
+        }
+        else if notification.object?.name == "foodList" {
+            self.cellConditional = "foodList"
+        }
+        
+        UIView.transitionWithView(self.tableView, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
     }
         
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-    
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 81.0
-//    }
     
     func calculateHeightForConfiguredSizingCell(cell: UITableViewCell) -> CGFloat
     {
@@ -59,60 +65,64 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return DataManager.sharedInstance.listItems.count
+        //20 results per query
+        return 20
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:CustomCell? = tableView.dequeueReusableCellWithIdentifier("cell") as! CustomCell?
-        
-        
-        let data = DataManager.sharedInstance.listItems[indexPath.row]
+
+        /*
+        var data = DataManager.sharedInstance.coffeeList[indexPath.row]
+        //set up conditionals for each list.
+        if self.cellConditional == "coffeeList" {
+            var data = DataManager.sharedInstance.coffeeList[indexPath.row]
+        }
+        else if self.cellConditional == "gymsList" {
+            var data = DataManager.sharedInstance.gymsList[indexPath.row]
+        }
+        else if self.cellConditional == "foodList" {
+            var data = DataManager.sharedInstance.foodList[indexPath.row]
+        }
         
         cell?.location.text = data.name!
-       
-        if let url = NSURL(string: (data.imageURL?.absoluteString)!),
-            data = NSData(contentsOfURL: url)
-        {
-            cell?.companyImage.image = UIImage(data: data)
-            
-        } else {
-            
-            cell?.companyImage.image = nil
-            
-        }
-        
-        cell?.companyImage.layer.cornerRadius = 10
-        cell?.companyImage.layer.masksToBounds = true
-                
-        let string = data.categories
-        
-        print(data.categories)
-        if let range = string!.rangeOfString(",") {
-            print(string!.substringToIndex(range.startIndex))
-            cell?.categories.text = ("\(string!.substringToIndex(range.startIndex))  •  \(data.distance!)")
-            
-        } else {
-            cell?.categories.text = ("\(data.categories!)  •  \(data.distance!)")
-
-        }
-        
         cell?.reviewCount.text = "\(data.reviewCount!) reviews"
         cell?.rating.rating = data.rating as! Double
         cell?.rating.settings.updateOnTouch = false
+        
+        cell?.companyImage.layer.cornerRadius = 10
+        cell?.companyImage.layer.masksToBounds = true
+        
+        //company image
+        if let url = data.imageURL?.absoluteString {
+            cell?.companyImage.kf_setImageWithURL(NSURL(string: url)!, placeholderImage: UIImage(named: "emptyCell.png"))
+        } else {
+            cell?.companyImage.image = UIImage(named: "emptyCell.png")
+            
+        }
+        
+        let category = data.categories
+        //shortening the yelp categories if there is more than one
+        if let range = category!.rangeOfString(",") {
+            print(category!.substringToIndex(range.startIndex))
+            cell?.categories.text = ("\(category!.substringToIndex(range.startIndex))  •  \(data.distance!)")
+        //if there is only one cateogry
+        } else {
+            cell?.categories.text = ("\(data.categories!)  •  \(data.distance!)")
+
+        }*/
 
         return cell!
     }
     
     // MARK: Drawer Content View Controller Delegate
     
-    func collapsedDrawerHeight() -> CGFloat
-    {
+    func collapsedDrawerHeight() -> CGFloat {
         return 58.0
     }
     
-    func partialRevealDrawerHeight() -> CGFloat
-    {
+    func partialRevealDrawerHeight() -> CGFloat {
         return 364.0
     }
     
