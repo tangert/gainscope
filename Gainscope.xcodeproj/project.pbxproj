@@ -13,12 +13,12 @@
 		361C26491D36D9650048B09B /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361C26481D36D9650048B09B /* Reachability.swift */; };
 		361C264B1D36D9A00048B09B /* PrimaryContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361C264A1D36D9A00048B09B /* PrimaryContentViewController.swift */; };
 		362E1F531D33F5720062B9CD /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362E1F521D33F5720062B9CD /* CustomPointAnnotation.swift */; };
+		363B0B131D53A64300719A6E /* DataManagerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B0B121D53A64300719A6E /* DataManagerNew.swift */; };
 		36600DAC1D486E5900FE4C53 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36600DAB1D486E5900FE4C53 /* CustomCell.swift */; };
 		36600DB21D49066F00FE4C53 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36600DB11D49066F00FE4C53 /* DataManager.swift */; };
 		36850E9C1D3D2AE7006D4652 /* tidbits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36850E9B1D3D2AE7006D4652 /* tidbits.swift */; };
 		3693CEC71D381AB7002DD8A7 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693CEC61D381AB7002DD8A7 /* YelpClient.swift */; };
 		369942751D4696C300CA04B7 /* DrawerContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369942741D4696C300CA04B7 /* DrawerContentViewController.swift */; };
-		36DCCBD41D516D980090D76F /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DCCBD31D516D980090D76F /* UserLocationManager.swift */; };
 		36E112F21D2F1B6E00545BE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E112F11D2F1B6E00545BE0 /* AppDelegate.swift */; };
 		36E112F91D2F1B6E00545BE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36E112F81D2F1B6E00545BE0 /* Assets.xcassets */; };
 		36E112FC1D2F1B6E00545BE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36E112FA1D2F1B6E00545BE0 /* LaunchScreen.storyboard */; };
@@ -60,12 +60,12 @@
 		361C26481D36D9650048B09B /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		361C264A1D36D9A00048B09B /* PrimaryContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryContentViewController.swift; sourceTree = "<group>"; };
 		362E1F521D33F5720062B9CD /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
+		363B0B121D53A64300719A6E /* DataManagerNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerNew.swift; sourceTree = "<group>"; };
 		36600DAB1D486E5900FE4C53 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		36600DB11D49066F00FE4C53 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		36850E9B1D3D2AE7006D4652 /* tidbits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tidbits.swift; sourceTree = "<group>"; };
 		3693CEC61D381AB7002DD8A7 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		369942741D4696C300CA04B7 /* DrawerContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerContentViewController.swift; sourceTree = "<group>"; };
-		36DCCBD31D516D980090D76F /* UserLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
 		36E112EE1D2F1B6E00545BE0 /* Gainscope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gainscope.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36E112F11D2F1B6E00545BE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36E112F81D2F1B6E00545BE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -183,6 +183,7 @@
 		3630051E1D2F1D3D00420D2D /* Helper Files */ = {
 			isa = PBXGroup;
 			children = (
+				363B0B121D53A64300719A6E /* DataManagerNew.swift */,
 				36850E9B1D3D2AE7006D4652 /* tidbits.swift */,
 			);
 			name = "Helper Files";
@@ -203,7 +204,6 @@
 				36600DAA1D47BA3B00FE4C53 /* Pulley */,
 				362E1F521D33F5720062B9CD /* CustomPointAnnotation.swift */,
 				36600DAB1D486E5900FE4C53 /* CustomCell.swift */,
-				36DCCBD31D516D980090D76F /* UserLocationManager.swift */,
 				36600DB11D49066F00FE4C53 /* DataManager.swift */,
 				361C264A1D36D9A00048B09B /* PrimaryContentViewController.swift */,
 				369942741D4696C300CA04B7 /* DrawerContentViewController.swift */,
@@ -569,10 +569,10 @@
 			files = (
 				361C264B1D36D9A00048B09B /* PrimaryContentViewController.swift in Sources */,
 				36600DB21D49066F00FE4C53 /* DataManager.swift in Sources */,
+				363B0B131D53A64300719A6E /* DataManagerNew.swift in Sources */,
 				3693CEC71D381AB7002DD8A7 /* YelpClient.swift in Sources */,
 				360870201D4AEF2B006956B0 /* PulleyPassthroughScrollView.swift in Sources */,
 				369942751D4696C300CA04B7 /* DrawerContentViewController.swift in Sources */,
-				36DCCBD41D516D980090D76F /* UserLocationManager.swift in Sources */,
 				36850E9C1D3D2AE7006D4652 /* tidbits.swift in Sources */,
 				36600DAC1D486E5900FE4C53 /* CustomCell.swift in Sources */,
 				362E1F531D33F5720062B9CD /* CustomPointAnnotation.swift in Sources */,
