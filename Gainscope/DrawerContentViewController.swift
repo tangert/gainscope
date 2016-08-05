@@ -46,46 +46,41 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         return 1
     }
     
-    //    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    //        return 81.0
-    //    }
-    
-    func calculateHeightForConfiguredSizingCell(cell: UITableViewCell) -> CGFloat
-    {
-        cell.setNeedsLayout()
-        cell.layoutIfNeeded()
-        let height = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingExpandedSize).height + 1.0
-        return height
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return DataManager.sharedInstance.listItems.count
     }
     
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:CustomCell? = tableView.dequeueReusableCellWithIdentifier("cell") as! CustomCell?
-        
-        
         let data = DataManager.sharedInstance.listItems[indexPath.row]
+    
+        if data.phone != nil {
+            cell?.phoneNumber = data.phone!
+ 
+        } else {
+            cell?.phoneNumber = nil
+        }
         
         cell?.location.text = data.name!
-        
+        cell?.latitude = data.latitude!
+        cell?.longitude = data.longitude!
 
-        if let URLString = data.imageURL?.absoluteString {
+        cell?.companyImage.layer.cornerRadius = 10
+        cell?.companyImage.layer.masksToBounds = true
         
+        if let URLString = data.imageURL?.absoluteString {
+            //caching images
             cell?.companyImage.kf_setImageWithURL(NSURL(string: URLString)!, placeholderImage: UIImage(named: "emptyCell.png"))
             
         } else {
             cell?.companyImage.image = UIImage(named: "emptyCell.png")
         }
         
-        cell?.companyImage.layer.cornerRadius = 10
-        cell?.companyImage.layer.masksToBounds = true
-        
         let string = data.categories
-        
+                
         print(data.categories)
         if let range = string!.rangeOfString(",") {
             print(string!.substringToIndex(range.startIndex))

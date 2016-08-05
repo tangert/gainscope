@@ -16,7 +16,6 @@ class DataManager {
     var listItems = [Business]()
     
     func addItem(item: Business) {
-        
         self.listItems.append(item)
         NSNotificationCenter.defaultCenter().postNotificationName("updateTableViewData", object: self.listItems)
     }

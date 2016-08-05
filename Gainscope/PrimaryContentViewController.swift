@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import MapKit
 import AddressBookUI
-import AFNetworking
 import NotificationCenter
+import AFNetworking
 
 class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, PulleyPrimaryContentControllerDelegate {
     
@@ -223,7 +223,6 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
         self.yelpClient.searchWithTerm(term, completion: { (results: [Business]!, error: NSError!) -> Void in
             
             for business in results {
-                
                 self.createMapPin(term, business: business)
                 DataManager.sharedInstance.addItem(business)
                 
