@@ -35,10 +35,7 @@ class CustomCell: UITableViewCell {
         stackView.arrangedSubviews.last?.hidden = true
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
-        
-        super.setSelected(selected, animated: animated)
-        
+    func changeCellStatus(selected: Bool){
         UIView.animateWithDuration(0.5,
                                    delay: 0,
                                    usingSpringWithDamping: 1,

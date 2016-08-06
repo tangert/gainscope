@@ -61,9 +61,10 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         
         if let selectedIndex = tableView.indexPathForSelectedRow where selectedIndex == indexPath {
-            
+            let cell = tableView.cellForRowAtIndexPath(selectedIndex) as! CustomCell
             tableView.beginUpdates()
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            cell.changeCellStatus(false)
             tableView.endUpdates()
             
             return nil
@@ -72,12 +73,13 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         return indexPath
     }
 
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CustomCell
+        cell.changeCellStatus(true)
         tableView.beginUpdates()
         tableView.endUpdates()
     }
-    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -108,13 +110,12 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
             cell?.companyImage.image = UIImage(named: "emptyCell.png")
         }
         
+        //reduces the cateogires to the first one if there are multiple
         let string = data.categories
-                
-        print(data.categories)
         if let range = string!.rangeOfString(",") {
             print(string!.substringToIndex(range.startIndex))
             cell?.categories.text = ("\(string!.substringToIndex(range.startIndex))  •  \(data.distance!)")
-            
+        //if originally only one category 
         } else {
             cell?.categories.text = ("\(data.categories!)  •  \(data.distance!)")
             
@@ -150,7 +151,7 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        
+
         let placemark = MKPlacemark(coordinate: view.annotation!.coordinate, addressDictionary: nil)
         
         let mapItem = MKMapItem(placemark: placemark)
