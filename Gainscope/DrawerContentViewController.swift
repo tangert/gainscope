@@ -11,6 +11,10 @@ import UIKit
 import NotificationCenter
 import Kingfisher
 import MapKit
+import UberRides
+
+let expandingCellId = "cell"
+let estimatedHeight: CGFloat = 150
 
 class DrawerContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PulleyDrawerViewControllerDelegate, UISearchBarDelegate, MKMapViewDelegate {
     
@@ -22,6 +26,9 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Tableview loaded")
+        
+        tableView.estimatedRowHeight = estimatedHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DrawerContentViewController.updateTableViewData(_:)) , name: "updateTableViewData", object: nil)
         
@@ -51,10 +58,30 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         return DataManager.sharedInstance.listItems.count
     }
     
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        
+        if let selectedIndex = tableView.indexPathForSelectedRow where selectedIndex == indexPath {
+            
+            tableView.beginUpdates()
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            tableView.endUpdates()
+            
+            return nil
+        }
+        
+        return indexPath
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell:CustomCell? = tableView.dequeueReusableCellWithIdentifier("cell") as! CustomCell?
+        let cell:CustomCell? = tableView.dequeueReusableCellWithIdentifier("cell") as! CustomCell?
         let data = DataManager.sharedInstance.listItems[indexPath.row]
     
         if data.phone != nil {
@@ -67,6 +94,8 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         cell?.location.text = data.name!
         cell?.latitude = data.latitude!
         cell?.longitude = data.longitude!
+        cell?.mainConstraint.text = ""
+        cell?.detailConstraint.text = ""
 
         cell?.companyImage.layer.cornerRadius = 10
         cell?.companyImage.layer.masksToBounds = true

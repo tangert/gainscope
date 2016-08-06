@@ -26,7 +26,10 @@ PODS:
     - AFNetworking/NSURLSession (~> 2.6.0)
   - Cosmos (1.2.3)
   - Kingfisher (2.4.1)
+  - ObjectMapper (1.1.5)
   - SnapKit (0.15.0)
+  - UberRides (0.4.2):
+    - ObjectMapper (~> 1.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
@@ -35,6 +38,7 @@ DEPENDENCIES:
   - Cosmos (~> 1.2)
   - Kingfisher (~> 2.4)
   - SnapKit (~> 0.15.0)
+  - UberRides
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -42,8 +46,10 @@ SPEC CHECKSUMS:
   BDBOAuth1Manager: cd5a5872f355ca38180d52ca2dd844f0b0c84797
   Cosmos: efddd01b729956ad6335bc58bc92e5735a1d12a3
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
+  ObjectMapper: 528b1a6677a6acac7747edd508576983e76a9148
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
+  UberRides: fa21246486f1c20b88392036501481f86e81a022
 
-PODFILE CHECKSUM: aa479e66065aa2b195701828cdaa3c8bb5de730d
+PODFILE CHECKSUM: 65c12a202dc8fb735c1396b0bb44e29f700c1d98
 
 COCOAPODS: 1.0.0

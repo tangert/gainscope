@@ -19,6 +19,10 @@ target ‘Gainscope' do
   end
 
 #pods
+
+#SDKs
+pod 'UberRides'
+
 #Networking
 pod 'AFNetworking', '~> 2.5'
 pod 'BDBOAuth1Manager'
