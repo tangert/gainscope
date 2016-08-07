@@ -14,7 +14,7 @@ import NotificationCenter
 import AFNetworking
 
 class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, PulleyPrimaryContentControllerDelegate {
-    
+        
     //Yelp Client info
     var yelpClient: YelpClient!
     let yelpConsumerKey = "uDLkplNRgQcI9sM0CMnHxg"
@@ -203,11 +203,8 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
     @IBAction func centerMap(sender: AnyObject) {
         
         if let location = self.locationManager.location {
-            
             let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-            
             self.map.setRegion(region, animated: true)
         }
         

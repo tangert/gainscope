@@ -26,15 +26,37 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var phoneButton: UIButton!
     @IBOutlet weak var navButton: UIButton!
     
+
     
     @IBAction func callPhone(sender: AnyObject) {
         self.animateButton(self.phoneButton)
         
         //add UIAlertView to ask for permission to call
-        
         let phoneNumber = self.phoneNumber
-        let CleanphoneNumber = phoneNumber!.stringByReplacingOccurrencesOfString(" ", withString: "")
-        if let phoneCallURL:NSURL = NSURL(string: "tel://\(CleanphoneNumber)") {
+        let cleanPhoneNumber = phoneNumber!.stringByReplacingOccurrencesOfString(" ", withString: "")
+        
+        let alertController = UIAlertController(title: "Call \(self.location.text!)?", message: cleanPhoneNumber, preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+        }
+        
+        alertController.addAction(cancelAction)
+        
+        let callAction = UIAlertAction(title: "Call", style: .Default) { (action) in
+            self.callPhone()
+        }
+        alertController.addAction(callAction)
+        
+        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
+
+    }
+    
+    
+    func callPhone() {
+        let phoneNumber = self.phoneNumber
+        let cleanPhoneNumber = phoneNumber!.stringByReplacingOccurrencesOfString(" ", withString: "")
+
+        if let phoneCallURL:NSURL = NSURL(string: "tel://\(cleanPhoneNumber)") {
             let application:UIApplication = UIApplication.sharedApplication()
             if (application.canOpenURL(phoneCallURL)) {
                 application.openURL(phoneCallURL);
@@ -64,3 +86,17 @@ class CustomCell: UITableViewCell {
         
     }
 }
+
+extension UIView {
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder!.nextResponder()
+            if parentResponder is UIViewController {
+                return parentResponder as! UIViewController!
+            }
+        }
+        return nil
+    }
+}
+

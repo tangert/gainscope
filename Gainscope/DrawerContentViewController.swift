@@ -21,9 +21,7 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var seperatorHeightConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        print("Tableview loaded")
-        
+        super.viewDidLoad()        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DrawerContentViewController.updateTableViewData(_:)) , name: "updateTableViewData", object: nil)
         
         gripperView.layer.cornerRadius = 2.5
@@ -31,9 +29,6 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        print("List item count: \(DataManager.sharedInstance.listItems.count)")
-        
     }
     
     
@@ -56,6 +51,7 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:CustomCell? = tableView.dequeueReusableCellWithIdentifier("cell") as! CustomCell?
+        
         let data = DataManager.sharedInstance.listItems[indexPath.row]
         
         if data.phone != nil {
@@ -69,11 +65,11 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         cell?.latitude = data.latitude!
         cell?.longitude = data.longitude!
         
+        //caching images
         cell?.companyImage.layer.cornerRadius = 10
         cell?.companyImage.layer.masksToBounds = true
         
         if let URLString = data.imageURL?.absoluteString {
-            //caching images
             cell?.companyImage.kf_setImageWithURL(NSURL(string: URLString)!, placeholderImage: UIImage(named: "emptyCell.png"))
             
         } else {
@@ -81,10 +77,7 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         let string = data.categories
-        
-        print(data.categories)
         if let range = string!.rangeOfString(",") {
-            print(string!.substringToIndex(range.startIndex))
             cell?.categories.text = ("\(string!.substringToIndex(range.startIndex))  •  \(data.distance!)")
             
         } else {
@@ -100,19 +93,15 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     // MARK: Drawer Content View Controller Delegate
-    
-    func collapsedDrawerHeight() -> CGFloat
-    {
+    func collapsedDrawerHeight() -> CGFloat {
         return 58.0
     }
     
-    func partialRevealDrawerHeight() -> CGFloat
-    {
+    func partialRevealDrawerHeight() -> CGFloat {
         return 364.0
     }
     
-    func drawerPositionDidChange(drawer: PulleyViewController)
-    {
+    func drawerPositionDidChange(drawer: PulleyViewController) {
         tableView.scrollEnabled = drawer.drawerPosition == .Open
         
         if drawer.drawerPosition != .Open
