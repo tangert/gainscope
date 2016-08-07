@@ -13,9 +13,6 @@ import Kingfisher
 import MapKit
 import UberRides
 
-let expandingCellId = "cell"
-let estimatedHeight: CGFloat = 150
-
 class DrawerContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PulleyDrawerViewControllerDelegate, UISearchBarDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
@@ -26,9 +23,6 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Tableview loaded")
-        
-        tableView.estimatedRowHeight = estimatedHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DrawerContentViewController.updateTableViewData(_:)) , name: "updateTableViewData", object: nil)
         
@@ -58,37 +52,15 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         return DataManager.sharedInstance.listItems.count
     }
     
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        
-        if let selectedIndex = tableView.indexPathForSelectedRow where selectedIndex == indexPath {
-            let cell = tableView.cellForRowAtIndexPath(selectedIndex) as! CustomCell
-            tableView.beginUpdates()
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            cell.changeCellStatus(false)
-            tableView.endUpdates()
-            
-            return nil
-        }
-        
-        return indexPath
-    }
-
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CustomCell
-        cell.changeCellStatus(true)
-        tableView.beginUpdates()
-        tableView.endUpdates()
-    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell:CustomCell? = tableView.dequeueReusableCellWithIdentifier("cell") as! CustomCell?
+        var cell:CustomCell? = tableView.dequeueReusableCellWithIdentifier("cell") as! CustomCell?
         let data = DataManager.sharedInstance.listItems[indexPath.row]
-    
+        
         if data.phone != nil {
             cell?.phoneNumber = data.phone!
- 
+            
         } else {
             cell?.phoneNumber = nil
         }
@@ -96,9 +68,7 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         cell?.location.text = data.name!
         cell?.latitude = data.latitude!
         cell?.longitude = data.longitude!
-        cell?.mainConstraint.text = ""
-        cell?.detailConstraint.text = ""
-
+        
         cell?.companyImage.layer.cornerRadius = 10
         cell?.companyImage.layer.masksToBounds = true
         
@@ -110,12 +80,13 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
             cell?.companyImage.image = UIImage(named: "emptyCell.png")
         }
         
-        //reduces the cateogires to the first one if there are multiple
         let string = data.categories
+        
+        print(data.categories)
         if let range = string!.rangeOfString(",") {
             print(string!.substringToIndex(range.startIndex))
             cell?.categories.text = ("\(string!.substringToIndex(range.startIndex))  •  \(data.distance!)")
-        //if originally only one category 
+            
         } else {
             cell?.categories.text = ("\(data.categories!)  •  \(data.distance!)")
             
@@ -151,7 +122,7 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-
+        
         let placemark = MKPlacemark(coordinate: view.annotation!.coordinate, addressDictionary: nil)
         
         let mapItem = MKMapItem(placemark: placemark)

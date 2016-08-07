@@ -230,33 +230,33 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
         })
         
         /*
-        if Reachability.isConnectedToNetwork() == true {
-            
-            print("Internet is ok.")
-            
-            self.yelpClient.searchWithTerm(term, completion: { (results: [Business]!, error: NSError!) -> Void in
-                
-                for business in results {
-                    
-                    self.createMapPin(term, business: business)
-                    DataManager.sharedInstance.addItem(business)
-                    
-                }
-            })
-            
-        } else {
-            
-            let alert = UIAlertController(title: "No internet!", message: "Try finding your gains when you are connected.", preferredStyle: UIAlertControllerStyle.Alert)
-            let alertAction = UIAlertAction(title: "Fine", style: UIAlertActionStyle.Default) {
-                (UIAlertAction) -> Void in
-            }
-            alert.addAction(alertAction)
-            self.presentViewController(alert, animated: true)
-            {
-                () -> Void in
-            }
-            
-        } */
+         if Reachability.isConnectedToNetwork() == true {
+         
+         print("Internet is ok.")
+         
+         self.yelpClient.searchWithTerm(term, completion: { (results: [Business]!, error: NSError!) -> Void in
+         
+         for business in results {
+         
+         self.createMapPin(term, business: business)
+         DataManager.sharedInstance.addItem(business)
+         
+         }
+         })
+         
+         } else {
+         
+         let alert = UIAlertController(title: "No internet!", message: "Try finding your gains when you are connected.", preferredStyle: UIAlertControllerStyle.Alert)
+         let alertAction = UIAlertAction(title: "Fine", style: UIAlertActionStyle.Default) {
+         (UIAlertAction) -> Void in
+         }
+         alert.addAction(alertAction)
+         self.presentViewController(alert, animated: true)
+         {
+         () -> Void in
+         }
+         
+         } */
         
     }
     

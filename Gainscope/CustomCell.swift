@@ -23,29 +23,9 @@ class CustomCell: UITableViewCell {
     var latitude: Double?
     var longitude: Double?
     
-    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var phoneButton: UIButton!
     @IBOutlet weak var navButton: UIButton!
     
-    @IBOutlet weak var mainConstraint: UILabel!
-    @IBOutlet weak var detailConstraint: UILabel!
-        
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        stackView.arrangedSubviews.last?.hidden = true
-    }
-    
-    func changeCellStatus(selected: Bool){
-        UIView.animateWithDuration(0.5,
-                                   delay: 0,
-                                   usingSpringWithDamping: 1,
-                                   initialSpringVelocity: 1,
-                                   options: UIViewAnimationOptions.CurveEaseIn,
-                                   animations: { () -> Void in
-                                    self.stackView.arrangedSubviews.last?.hidden = !selected
-            },
-                                   completion: nil)
-    }
     
     @IBAction func callPhone(sender: AnyObject) {
         self.animateButton(self.phoneButton)
