@@ -18,15 +18,12 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var categories: UILabel!
     @IBOutlet weak var rating: CosmosView!
     @IBOutlet weak var reviewCount: UILabel!
-    
     var phoneNumber: String?
     var latitude: Double?
     var longitude: Double?
     
     @IBOutlet weak var phoneButton: UIButton!
     @IBOutlet weak var navButton: UIButton!
-    
-
     
     @IBAction func callPhone(sender: AnyObject) {
         self.animateButton(self.phoneButton)
@@ -37,16 +34,16 @@ class CustomCell: UITableViewCell {
         
         let alertController = UIAlertController(title: "Call \(self.location.text!)?", message: cleanPhoneNumber, preferredStyle: .Alert)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
-        }
-        
-        alertController.addAction(cancelAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in }
         
         let callAction = UIAlertAction(title: "Call", style: .Default) { (action) in
             self.callPhone()
         }
+        
+        alertController.addAction(cancelAction)
         alertController.addAction(callAction)
         
+        //shows the alert on the root view controller
         UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
 
     }

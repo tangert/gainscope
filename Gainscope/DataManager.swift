@@ -20,7 +20,7 @@ class DataManager {
         NSNotificationCenter.defaultCenter().postNotificationName("updateTableViewData", object: self.listItems)
         
         if listItems.count > 20 {
-            
+            //if user presses multiple buttons before data loads…
             for index in 0..<self.listItems.count - 20  {
                 self.listItems.removeAtIndex(index)
                 print(self.listItems.count)

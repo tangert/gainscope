@@ -13,7 +13,7 @@ import Kingfisher
 import MapKit
 import UberRides
 
-class DrawerContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PulleyDrawerViewControllerDelegate, UISearchBarDelegate, MKMapViewDelegate {
+class DrawerContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, MKMapViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, PulleyDrawerViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -29,8 +29,15 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
     }
     
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "noData.png")
+    }
     
     func updateTableViewData(notification: NSNotification) {
         UIView.transitionWithView(self.tableView, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
@@ -104,8 +111,7 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     func drawerPositionDidChange(drawer: PulleyViewController) {
         tableView.scrollEnabled = drawer.drawerPosition == .Open
         
-        if drawer.drawerPosition != .Open
-        {
+        if drawer.drawerPosition != .Open {
             searchBar.resignFirstResponder()
         }
     }
@@ -125,8 +131,7 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: Search Bar delegate
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         
-        if let drawerVC = self.parentViewController as? PulleyViewController
-        {
+        if let drawerVC = self.parentViewController as? PulleyViewController {
             drawerVC.setDrawerPosition(.Open, animated: true)
         }
     }
