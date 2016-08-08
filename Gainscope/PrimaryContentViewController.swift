@@ -13,7 +13,7 @@ import AddressBookUI
 import NotificationCenter
 import AFNetworking
 
-class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, PulleyPrimaryContentControllerDelegate {
+class PrimaryContentViewController: UIViewController, MKMapViewDelegate, UserLocationManagerDelegate, PulleyPrimaryContentControllerDelegate {
         
     //Yelp Client info
     var yelpClient: YelpClient!
@@ -21,8 +21,6 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
     let yelpConsumerSecret = "2-34WuoVmOzCEs8NNWrdW0oAECc"
     let yelpToken = "yULdo-JwtBGgi1uNRvW-Yprll86x2JlU"
     let yelpTokenSecret = "wvgz30HjKdqR9Ul0qKSyDd4ASCM"
-    
-    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,47 +44,23 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
         
         //map setup
         self.map.delegate = self
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
+        UserLocationManager.sharedInstance.delegate = self
+        UserLocationManager.sharedInstance.startUpdatingLocation()
         self.map.showsUserLocation = true
         
     }
-    
-    //tracking distance traveled
-    var startLocation:CLLocation!
-    var lastLocation: CLLocation!
-    var traveledDistance:Double = 0
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        //getting the current location and centering the map
-        let location = locations.last
-        
-        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+
+    func tracingLocation(currentLocation: CLLocation){
+        let center = CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
-        
         self.map.setRegion(region, animated: true)
-        self.locationManager.stopUpdatingLocation()
-        
-        //tracking distance traveled to determine duplicate API calls.
-        if startLocation == nil {
-            startLocation = locations.first
-        } else {
-            if let lastLocation = locations.last {
-                let distance = startLocation.distanceFromLocation(lastLocation)
-                let lastDistance = lastLocation.distanceFromLocation(lastLocation)
-                traveledDistance += lastDistance
-            }
-        }
-        lastLocation = locations.last
-        
-        
+        UserLocationManager.sharedInstance.stopUpdatingLocation()
+    
     }
     
     var locationFound = true
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func tracingLocationDidFailWithError(error: NSError) {
+    
         print("Error: " + error.localizedDescription)
         
         let alert = UIAlertController(title: "Oh crap!", message: "We couldn't find your current location.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -202,14 +176,14 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
     
     @IBAction func centerMap(sender: AnyObject) {
         
-        if let location = self.locationManager.location {
+        if let location = UserLocationManager.sharedInstance.lastLocation {
             let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
             self.map.setRegion(region, animated: true)
         }
         
-        
     }
+    
     
     
     //passes in a string

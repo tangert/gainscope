@@ -17,6 +17,7 @@
 		36600DB21D49066F00FE4C53 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36600DB11D49066F00FE4C53 /* DataManager.swift */; };
 		36850E9C1D3D2AE7006D4652 /* tidbits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36850E9B1D3D2AE7006D4652 /* tidbits.swift */; };
 		368F0B171D5817AE00CD9F99 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F0B161D5817AE00CD9F99 /* UIScrollView+EmptyDataSet.m */; };
+		368F0B1B1D581A3D00CD9F99 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368F0B1A1D581A3D00CD9F99 /* UserLocationManager.swift */; };
 		3693CEC71D381AB7002DD8A7 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693CEC61D381AB7002DD8A7 /* YelpClient.swift */; };
 		369942751D4696C300CA04B7 /* DrawerContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369942741D4696C300CA04B7 /* DrawerContentViewController.swift */; };
 		36E112F21D2F1B6E00545BE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E112F11D2F1B6E00545BE0 /* AppDelegate.swift */; };
@@ -66,6 +67,7 @@
 		368F0B151D5817AE00CD9F99 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+EmptyDataSet.h"; path = "../../DZNEmptyDataSet-master/Source/UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		368F0B161D5817AE00CD9F99 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+EmptyDataSet.m"; path = "../../DZNEmptyDataSet-master/Source/UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		368F0B181D5817CF00CD9F99 /* Gainscope-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gainscope-Bridging-Header.h"; sourceTree = "<group>"; };
+		368F0B1A1D581A3D00CD9F99 /* UserLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
 		3693CEC61D381AB7002DD8A7 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		369942741D4696C300CA04B7 /* DrawerContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerContentViewController.swift; sourceTree = "<group>"; };
 		36E112EE1D2F1B6E00545BE0 /* Gainscope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gainscope.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +211,7 @@
 				362E1F521D33F5720062B9CD /* CustomPointAnnotation.swift */,
 				36600DAB1D486E5900FE4C53 /* CustomCell.swift */,
 				36600DB11D49066F00FE4C53 /* DataManager.swift */,
+				368F0B1A1D581A3D00CD9F99 /* UserLocationManager.swift */,
 				361C264A1D36D9A00048B09B /* PrimaryContentViewController.swift */,
 				369942741D4696C300CA04B7 /* DrawerContentViewController.swift */,
 			);
@@ -592,6 +595,7 @@
 				361B5DDA1D357D2B00C9BCAA /* Business.swift in Sources */,
 				36E112F21D2F1B6E00545BE0 /* AppDelegate.swift in Sources */,
 				360870221D4AEF3A006956B0 /* PulleyViewController.swift in Sources */,
+				368F0B1B1D581A3D00CD9F99 /* UserLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
