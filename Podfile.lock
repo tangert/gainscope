@@ -25,8 +25,8 @@ PODS:
     - AFNetworking/NSURLConnection (~> 2.6.0)
     - AFNetworking/NSURLSession (~> 2.6.0)
   - Cosmos (1.2.3)
-  - DZNEmptyDataSet (1.8.1)
   - Kingfisher (2.4.1)
+  - NVActivityIndicatorView (2.7)
   - ObjectMapper (1.1.5)
   - SnapKit (0.15.0)
   - UberRides (0.4.2):
@@ -37,8 +37,8 @@ DEPENDENCIES:
   - AsyncSwift
   - BDBOAuth1Manager
   - Cosmos (~> 1.2)
-  - DZNEmptyDataSet
   - Kingfisher (~> 2.4)
+  - NVActivityIndicatorView
   - SnapKit (~> 0.15.0)
   - UberRides
 
@@ -47,12 +47,12 @@ SPEC CHECKSUMS:
   AsyncSwift: 46a78bceb11f0e5bb52747f740d9692ec78d2d7c
   BDBOAuth1Manager: cd5a5872f355ca38180d52ca2dd844f0b0c84797
   Cosmos: efddd01b729956ad6335bc58bc92e5735a1d12a3
-  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
+  NVActivityIndicatorView: dc80f18fb27ac92f0aa87246cc13dc39ed3e9ee0
   ObjectMapper: 528b1a6677a6acac7747edd508576983e76a9148
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   UberRides: fa21246486f1c20b88392036501481f86e81a022
 
-PODFILE CHECKSUM: 68b2026d38f895207caca590050e9e89b870666a
+PODFILE CHECKSUM: 421f4688863c9bab0ed9b2a2e988042f148629b4
 
 COCOAPODS: 1.0.0

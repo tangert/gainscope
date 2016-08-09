@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '16FB872D0D2D4BA0F378AB34D47CF95F'
-               BlueprintName = 'DZNEmptyDataSet'
+               BlueprintIdentifier = 'BDDC4DBF7654960710F7FF7B28F35033'
+               BlueprintName = 'NVActivityIndicatorView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'DZNEmptyDataSet.framework'>
+               BuildableName = 'NVActivityIndicatorView.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

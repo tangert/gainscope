@@ -9,11 +9,12 @@
 import Foundation
 import UIKit
 import MapKit
+import NVActivityIndicatorView
 import AddressBookUI
 import NotificationCenter
 import AFNetworking
 
-class PrimaryContentViewController: UIViewController, MKMapViewDelegate, UserLocationManagerDelegate, PulleyPrimaryContentControllerDelegate {
+class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, PulleyPrimaryContentControllerDelegate {
         
     //Yelp Client info
     var yelpClient: YelpClient!
@@ -21,6 +22,8 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, UserLoc
     let yelpConsumerSecret = "2-34WuoVmOzCEs8NNWrdW0oAECc"
     let yelpToken = "yULdo-JwtBGgi1uNRvW-Yprll86x2JlU"
     let yelpTokenSecret = "wvgz30HjKdqR9Ul0qKSyDd4ASCM"
+    
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,32 +38,55 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, UserLoc
         self.centerButtonBackground.clipsToBounds = true
         
         let coffeeImage : UIImage = UIImage(named: "coffeeUnfilledGrey.png")!
-        let gymsImage: UIImage = UIImage(named: "gymsUnfilledGrey.png")!
+        let gymImage: UIImage = UIImage(named: "gymUnfilledGrey.png")!
         let foodImage: UIImage = UIImage(named: "foodUnfilledGrey.png")!
         self.coffeeButton.setImage(coffeeImage, forState: .Normal)
-        self.gymsButton.setImage(gymsImage, forState: .Normal)
+        self.gymsButton.setImage(gymImage, forState: .Normal)
         self.foodButton.setImage(foodImage, forState: .Normal)
         
         
         //map setup
         self.map.delegate = self
-        UserLocationManager.sharedInstance.delegate = self
-        UserLocationManager.sharedInstance.startUpdatingLocation()
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
         self.map.showsUserLocation = true
         
     }
 
-    func tracingLocation(currentLocation: CLLocation){
-        let center = CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
-        self.map.setRegion(region, animated: true)
-        UserLocationManager.sharedInstance.stopUpdatingLocation()
+    var startLocation:CLLocation!
+    var lastLocation: CLLocation!
+    var traveledDistance:Double = 0
     
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        //getting the current location and centering the map
+        let location = locations.last
+        
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
+        
+        self.map.setRegion(region, animated: true)
+        self.locationManager.stopUpdatingLocation()
+        
+        //tracking distance traveled to determine duplicate API calls.
+        if startLocation == nil {
+            startLocation = locations.first
+        } else {
+            if let lastLocation = locations.last {
+                let distance = startLocation.distanceFromLocation(lastLocation)
+                let lastDistance = lastLocation.distanceFromLocation(lastLocation)
+                traveledDistance += lastDistance
+            }
+        }
+        lastLocation = locations.last
+        
+        
     }
     
     var locationFound = true
-    func tracingLocationDidFailWithError(error: NSError) {
-    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("Error: " + error.localizedDescription)
         
         let alert = UIAlertController(title: "Oh crap!", message: "We couldn't find your current location.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -91,6 +117,24 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, UserLoc
     @IBOutlet weak var buttonsBottomConstraint: NSLayoutConstraint!
     private let buttonsBottomDistance: CGFloat = 0.0
     
+    func removeMapPins() {
+        for annotation in map.annotations {
+            self.map.removeAnnotation(annotation)
+        }
+    }
+    
+    @IBAction func centerMap(sender: AnyObject) {
+        
+        if let location = self.locationManager.location {
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+            self.map.setRegion(region, animated: true)
+        }
+        
+        
+    }
+    
+    
     enum Mode {
         case None
         case Coffee
@@ -99,6 +143,59 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, UserLoc
     }
     
     var mode = Mode.None
+    
+    @IBAction func buttonPressed(button: UIButton) {
+        
+        var progress = NVActivityIndicatorView(
+            frame: button.bounds,
+            type: .BallScale,
+            color: UIColor(red: 249/255, green: 134/255, blue: 110/255, alpha: 1.0))
+        
+        button.addSubview(progress)
+        
+        if button.tag == 1 && self.mode != .Coffee {
+            initialPressAnimation(button)
+            progress.startAnimation()
+            removeMapPins()
+            DataManager.sharedInstance.removeItems()
+            
+            createContent("coffee", button: button, progress: progress)
+            //sets the other two buttons to their default image
+            setDefaultImage(gymsButton, image1: "gymUnfilledGrey.png", button2: foodButton, image2: "foodUnfilledGrey.png")
+            
+            mode = .Coffee
+        }
+        
+        if button.tag == 2 && self.mode != .Gym{
+            initialPressAnimation(button)
+            progress.startAnimation()
+            removeMapPins()
+            DataManager.sharedInstance.removeItems()
+            
+            createContent("gym", button: button, progress: progress)
+            setDefaultImage(coffeeButton, image1: "coffeeUnfilledGrey.png", button2: foodButton, image2: "foodUnfilledGrey.png")
+            mode = .Gym
+        }
+        
+        if button.tag == 3 && self.mode != .Food{
+            initialPressAnimation(button)
+            progress.startAnimation()
+            removeMapPins()
+            DataManager.sharedInstance.removeItems()
+            
+            createContent("food", button: button, progress: progress)
+            setDefaultImage(coffeeButton, image1: "coffeeUnfilledGrey.png", button2: gymsButton, image2: "gymUnfilledGrey.png")
+            mode = .Food
+        }
+    }
+    
+    func initialPressAnimation(button: UIButton) {
+        var pressedState = CGAffineTransformMakeScale(0.8, 0.8)
+        UIView.animateWithDuration(0.125, animations: {
+            button.transform = pressedState
+            }, completion: nil)
+        
+    }
     
     func animateButton(button: UIButton, filledImage: String) {
         
@@ -126,70 +223,10 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, UserLoc
         button2?.setImage(image2, forState: .Normal)
     }
     
-    @IBAction func buttonPressed(sender: AnyObject) {
-        
-        if sender.tag == 1 && self.mode != .Coffee {
-            removeMapPins()
-            DataManager.sharedInstance.removeItems()
-            
-            createContent("coffee")
-            
-            //sets the selected button to the highlighted image with a spring animation
-            animateButton(self.coffeeButton, filledImage: "coffeeButton.png")
-            
-            //sets the other two buttons to their default image
-            setDefaultImage(gymsButton, image1: "gymsUnfilledGrey.png", button2: foodButton, image2: "foodUnfilledGrey.png")
-            
-            mode = .Coffee
-        }
-        
-        if sender.tag == 2 && self.mode != .Gym{
-            
-            //clean all the data
-            removeMapPins()
-            DataManager.sharedInstance.removeItems()
-            
-            createContent("gym")
-            
-            animateButton(self.gymsButton, filledImage: "gymsButton.png")
-            setDefaultImage(coffeeButton, image1: "coffeeUnfilledGrey.png", button2: foodButton, image2: "foodUnfilledGrey.png")
-            mode = .Gym
-        }
-        
-        if sender.tag == 3 && self.mode != .Food{
-            removeMapPins()
-            DataManager.sharedInstance.removeItems()
-            
-            createContent("food")
-            
-            animateButton(self.foodButton, filledImage: "foodButton.png")
-            setDefaultImage(coffeeButton, image1: "coffeeUnfilledGrey.png", button2: gymsButton, image2: "gymsUnfilledGrey.png")
-            mode = .Food
-        }
-    }
-    
-    func removeMapPins() {
-        for annotation in map.annotations {
-            self.map.removeAnnotation(annotation)
-        }
-    }
-    
-    @IBAction func centerMap(sender: AnyObject) {
-        
-        if let location = UserLocationManager.sharedInstance.lastLocation {
-            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-            self.map.setRegion(region, animated: true)
-        }
-        
-    }
-    
-    
-    
     //passes in a string
     //performs yelp search with that term
     //for each business in results, create a map pin and add to the data manager.
-    func createContent(term: String) {
+    func createContent(term: String, button: UIButton, progress: NVActivityIndicatorView) {
         
         self.yelpClient.searchWithTerm(term, completion: { (results: [Business]!, error: NSError!) -> Void in
             
@@ -198,6 +235,24 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, UserLoc
                 DataManager.sharedInstance.addItem(business)
                 
             }
+            
+            func setImage(image: String) {
+                self.animateButton(button, filledImage: image)
+            }
+            
+            if button.tag == 1 {
+                setImage("\(term)Button.png")
+            } else if button.tag == 2 {
+                setImage("\(term)Button.png")
+
+            } else if button.tag == 3 {
+                setImage("\(term)Button.png")
+            }
+            
+            progress.stopAnimation()
+            progress.hidesWhenStopped = true
+            
+            
         })
         
         /*

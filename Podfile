@@ -34,5 +34,6 @@ pod 'Kingfisher', '~> 2.4'
 #UIstuff
 pod 'Cosmos', '~> 1.2'
 pod 'SnapKit', '~> 0.15.0'
+pod 'NVActivityIndicatorView'
 
 end
