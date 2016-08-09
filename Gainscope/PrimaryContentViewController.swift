@@ -313,9 +313,7 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
             || business.name!.rangeOfString("Crossfit") != nil {
             pointAnnotation.pinCustomImageName = "crossfit"
             
-        }
-            
-        else if business.name!.rangeOfString("YMCA") != nil {
+        } else if business.name!.rangeOfString("YMCA") != nil {
             pointAnnotation.pinCustomImageName = "ymca"
             
         }

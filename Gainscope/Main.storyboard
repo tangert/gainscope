@@ -190,15 +190,8 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWY-hf-pgx">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="18"/>
                                             <subviews>
-                                                <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Search through nearby gains." translatesAutoresizingMaskIntoConstraints="NO" id="6Lx-eA-DfI">
-                                                    <rect key="frame" x="0.0" y="12" width="600" height="44"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="Ckz-Rn-Nwr" id="OtB-0T-gpe"/>
-                                                    </connections>
-                                                </searchBar>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kY-ck-DFB">
                                                     <rect key="frame" x="282" y="8" width="36" height="5"/>
                                                     <color key="backgroundColor" red="0.72941176470000002" green="0.72549019609999998" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -208,7 +201,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ReL-f8-3h7">
-                                                    <rect key="frame" x="0.0" y="67" width="600" height="1"/>
+                                                    <rect key="frame" x="0.0" y="26" width="600" height="1"/>
                                                     <color key="backgroundColor" red="0.81960784310000001" green="0.81960784310000001" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="Q5h-LL-MP8"/>
@@ -217,17 +210,14 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="6Lx-eA-DfI" firstAttribute="leading" secondItem="nWY-hf-pgx" secondAttribute="leading" id="BRQ-H9-ylv"/>
-                                                <constraint firstAttribute="height" constant="68" id="TnS-Bv-cJ8"/>
-                                                <constraint firstAttribute="trailing" secondItem="6Lx-eA-DfI" secondAttribute="trailing" id="UUd-H7-Mcc"/>
-                                                <constraint firstAttribute="bottom" secondItem="ReL-f8-3h7" secondAttribute="bottom" id="gou-7K-Ww7"/>
-                                                <constraint firstItem="6Lx-eA-DfI" firstAttribute="centerY" secondItem="nWY-hf-pgx" secondAttribute="centerY" id="gvE-Yj-h51"/>
+                                                <constraint firstAttribute="height" constant="18" id="TnS-Bv-cJ8"/>
+                                                <constraint firstAttribute="bottom" secondItem="ReL-f8-3h7" secondAttribute="bottom" constant="-9" id="gou-7K-Ww7"/>
                                                 <constraint firstItem="2kY-ck-DFB" firstAttribute="centerX" secondItem="nWY-hf-pgx" secondAttribute="centerX" id="p7E-Id-2oR"/>
                                                 <constraint firstItem="2kY-ck-DFB" firstAttribute="top" secondItem="nWY-hf-pgx" secondAttribute="top" constant="8" id="q2J-eG-A0X"/>
                                             </constraints>
                                         </view>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="103" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SQN-bn-msS">
-                                            <rect key="frame" x="0.0" y="68" width="600" height="512"/>
+                                            <rect key="frame" x="0.0" y="26" width="600" height="554"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <prototypes>
                                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="103" id="aal-va-4Nf" customClass="CustomCell" customModule="Gainscope" customModuleProvider="target">
@@ -359,7 +349,7 @@
                                         <constraint firstAttribute="trailing" secondItem="SQN-bn-msS" secondAttribute="trailing" id="B7P-Fu-0nz"/>
                                         <constraint firstAttribute="bottom" secondItem="SQN-bn-msS" secondAttribute="bottom" constant="20" id="BQK-YG-ura"/>
                                         <constraint firstItem="SQN-bn-msS" firstAttribute="leading" secondItem="6bY-Pk-2IE" secondAttribute="leading" id="GBP-Nf-IyP"/>
-                                        <constraint firstItem="SQN-bn-msS" firstAttribute="top" secondItem="nWY-hf-pgx" secondAttribute="bottom" id="Mz4-EA-G6x"/>
+                                        <constraint firstItem="SQN-bn-msS" firstAttribute="top" secondItem="nWY-hf-pgx" secondAttribute="bottom" constant="8" id="Mz4-EA-G6x"/>
                                         <constraint firstItem="ReL-f8-3h7" firstAttribute="leading" secondItem="6bY-Pk-2IE" secondAttribute="leading" id="Rto-t3-qyB"/>
                                         <constraint firstAttribute="trailing" secondItem="ReL-f8-3h7" secondAttribute="trailing" id="bgq-5E-yNz"/>
                                         <constraint firstItem="nWY-hf-pgx" firstAttribute="top" secondItem="6bY-Pk-2IE" secondAttribute="top" id="tVK-I8-DvT"/>
@@ -385,7 +375,6 @@
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="gripperView" destination="2kY-ck-DFB" id="n9i-AU-H1s"/>
-                        <outlet property="searchBar" destination="6Lx-eA-DfI" id="XzL-dc-GV1"/>
                         <outlet property="seperatorHeightConstraint" destination="Q5h-LL-MP8" id="E6S-Ul-s9J"/>
                         <outlet property="tableView" destination="SQN-bn-msS" id="aEf-fB-oyb"/>
                     </connections>

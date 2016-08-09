@@ -101,7 +101,7 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     
     // MARK: Drawer Content View Controller Delegate
     func collapsedDrawerHeight() -> CGFloat {
-        return 58.0
+        return 26.0
     }
     
     func partialRevealDrawerHeight() -> CGFloat {
@@ -110,10 +110,6 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     
     func drawerPositionDidChange(drawer: PulleyViewController) {
         tableView.scrollEnabled = drawer.drawerPosition == .Open
-        
-        if drawer.drawerPosition != .Open {
-            searchBar.resignFirstResponder()
-        }
     }
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -125,15 +121,6 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         
         let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
         mapItem.openInMapsWithLaunchOptions(launchOptions)
-    }
-    
-    
-    // MARK: Search Bar delegate
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        
-        if let drawerVC = self.parentViewController as? PulleyViewController {
-            drawerVC.setDrawerPosition(.Open, animated: true)
-        }
     }
     
 }
