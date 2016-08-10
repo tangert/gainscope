@@ -151,22 +151,33 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
             type: .BallScale,
             color: UIColor(red: 249/255, green: 134/255, blue: 110/255, alpha: 1.0))
         
-        button.addSubview(progress)
-        
         if button.tag == 1 && self.mode != .Coffee {
+            print("Coffee button Pressed")
+            
+            //loading animations
+            button.addSubview(progress)
             initialPressAnimation(button)
             progress.startAnimation()
+            
+            //previous data removal
             removeMapPins()
             DataManager.sharedInstance.removeItems()
             
+            //does Yelp search, populates map with Pins, and animates selected button.
             createContent("coffee", button: button, progress: progress)
+            
             //sets the other two buttons to their default image
             setDefaultImage(gymsButton, image1: "gymUnfilledGrey.png", button2: foodButton, image2: "foodUnfilledGrey.png")
             
+            
             mode = .Coffee
+            
         }
         
         if button.tag == 2 && self.mode != .Gym{
+            print("Gym button Pressed")
+            
+            button.addSubview(progress)
             initialPressAnimation(button)
             progress.startAnimation()
             removeMapPins()
@@ -178,6 +189,9 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
         }
         
         if button.tag == 3 && self.mode != .Food{
+            print("Food button Pressed")
+            
+            button.addSubview(progress)
             initialPressAnimation(button)
             progress.startAnimation()
             removeMapPins()
@@ -190,7 +204,7 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
     }
     
     func initialPressAnimation(button: UIButton) {
-        var pressedState = CGAffineTransformMakeScale(0.8, 0.8)
+        let pressedState = CGAffineTransformMakeScale(0.8, 0.8)
         UIView.animateWithDuration(0.125, animations: {
             button.transform = pressedState
             }, completion: nil)
@@ -201,7 +215,6 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
         
         let filledImage = UIImage(named: filledImage)
         button.transform = CGAffineTransformMakeScale(0.5, 0.5)
-        
         UIView.animateWithDuration(0.5, delay: 0,usingSpringWithDamping: 0.2,
                                    initialSpringVelocity: 6.0,
                                    options: UIViewAnimationOptions.AllowUserInteraction,
@@ -223,9 +236,7 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
         button2?.setImage(image2, forState: .Normal)
     }
     
-    //passes in a string
-    //performs yelp search with that term
-    //for each business in results, create a map pin and add to the data manager.
+    
     func createContent(term: String, button: UIButton, progress: NVActivityIndicatorView) {
         
         self.yelpClient.searchWithTerm(term, completion: { (results: [Business]!, error: NSError!) -> Void in
@@ -251,7 +262,6 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
             
             progress.stopAnimation()
             progress.hidesWhenStopped = true
-            
             
         })
         
@@ -345,14 +355,12 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
         
     }
     
-    func drawerChangedDistanceFromBottom(drawer: PulleyViewController, distance: CGFloat)
-    {
-        if distance <= 364.0
-        {
+    func drawerChangedDistanceFromBottom(drawer: PulleyViewController, distance: CGFloat) {
+        
+        if distance <= 364.0 {
             buttonsBottomConstraint.constant = distance + buttonsBottomDistance
         }
-        else
-        {
+        else {
             buttonsBottomConstraint.constant = 364.0 + buttonsBottomDistance
         }
     }

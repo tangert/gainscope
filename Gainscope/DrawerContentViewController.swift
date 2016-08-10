@@ -42,11 +42,17 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     func updateTableViewData(notification: NSNotification) {
         UIView.transitionWithView(self.tableView, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
         //self.tableView.reloadData()
-        print("Notfication from PrimaryView sent. ListItem Count: \(DataManager.sharedInstance.listItems.count)")
+        //print("Notfication from PrimaryView sent. ListItem Count: \(DataManager.sharedInstance.listItems.count)")
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        
+        //1 search = 20 results.
+        //2 searches = 40 results
+        //therefore # of results/20 = number of searches
+        //# of searches = # of sections
+        
+        return (DataManager.sharedInstance.listItems.count)/20
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

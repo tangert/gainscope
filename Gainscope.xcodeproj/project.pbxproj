@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3601399E1D5A815E00BCABC3 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3601399D1D5A815E00BCABC3 /* UIScrollView+EmptyDataSet.m */; };
 		360870201D4AEF2B006956B0 /* PulleyPassthroughScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3608701F1D4AEF2B006956B0 /* PulleyPassthroughScrollView.swift */; };
 		360870221D4AEF3A006956B0 /* PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360870211D4AEF3A006956B0 /* PulleyViewController.swift */; };
 		361B5DDA1D357D2B00C9BCAA /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B5DD91D357D2B00C9BCAA /* Business.swift */; };
@@ -16,7 +17,6 @@
 		36600DAC1D486E5900FE4C53 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36600DAB1D486E5900FE4C53 /* CustomCell.swift */; };
 		36600DB21D49066F00FE4C53 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36600DB11D49066F00FE4C53 /* DataManager.swift */; };
 		36850E9C1D3D2AE7006D4652 /* tidbits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36850E9B1D3D2AE7006D4652 /* tidbits.swift */; };
-		368F0B171D5817AE00CD9F99 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 368F0B161D5817AE00CD9F99 /* UIScrollView+EmptyDataSet.m */; };
 		3693CEC71D381AB7002DD8A7 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693CEC61D381AB7002DD8A7 /* YelpClient.swift */; };
 		369942751D4696C300CA04B7 /* DrawerContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369942741D4696C300CA04B7 /* DrawerContentViewController.swift */; };
 		36E112F21D2F1B6E00545BE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E112F11D2F1B6E00545BE0 /* AppDelegate.swift */; };
@@ -54,6 +54,8 @@
 		07A4CB40585046541F9D3D17 /* Pods-GainscopeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GainscopeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GainscopeUITests/Pods-GainscopeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1EEFE6ACE4339494B9BE057F /* Pods-GainscopeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GainscopeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GainscopeTests/Pods-GainscopeTests.release.xcconfig"; sourceTree = "<group>"; };
 		2992738D839A2221CB7050A9 /* Pods-GainscopeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GainscopeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GainscopeTests/Pods-GainscopeTests.release.xcconfig"; sourceTree = "<group>"; };
+		3601399D1D5A815E00BCABC3 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
+		3601399F1D5A816600BCABC3 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		3608701F1D4AEF2B006956B0 /* PulleyPassthroughScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulleyPassthroughScrollView.swift; sourceTree = "<group>"; };
 		360870211D4AEF3A006956B0 /* PulleyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulleyViewController.swift; sourceTree = "<group>"; };
 		361B5DD91D357D2B00C9BCAA /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
@@ -63,8 +65,6 @@
 		36600DAB1D486E5900FE4C53 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		36600DB11D49066F00FE4C53 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		36850E9B1D3D2AE7006D4652 /* tidbits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tidbits.swift; sourceTree = "<group>"; };
-		368F0B151D5817AE00CD9F99 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+EmptyDataSet.h"; path = "../../DZNEmptyDataSet-master/Source/UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
-		368F0B161D5817AE00CD9F99 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+EmptyDataSet.m"; path = "../../DZNEmptyDataSet-master/Source/UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		368F0B181D5817CF00CD9F99 /* Gainscope-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gainscope-Bridging-Header.h"; sourceTree = "<group>"; };
 		3693CEC61D381AB7002DD8A7 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		369942741D4696C300CA04B7 /* DrawerContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerContentViewController.swift; sourceTree = "<group>"; };
@@ -237,8 +237,8 @@
 		368F0B191D5817F400CD9F99 /* DZNEmptyDataSet */ = {
 			isa = PBXGroup;
 			children = (
-				368F0B161D5817AE00CD9F99 /* UIScrollView+EmptyDataSet.m */,
-				368F0B151D5817AE00CD9F99 /* UIScrollView+EmptyDataSet.h */,
+				3601399D1D5A815E00BCABC3 /* UIScrollView+EmptyDataSet.m */,
+				3601399F1D5A816600BCABC3 /* UIScrollView+EmptyDataSet.h */,
 			);
 			name = DZNEmptyDataSet;
 			sourceTree = "<group>";
@@ -585,7 +585,7 @@
 				360870201D4AEF2B006956B0 /* PulleyPassthroughScrollView.swift in Sources */,
 				369942751D4696C300CA04B7 /* DrawerContentViewController.swift in Sources */,
 				36850E9C1D3D2AE7006D4652 /* tidbits.swift in Sources */,
-				368F0B171D5817AE00CD9F99 /* UIScrollView+EmptyDataSet.m in Sources */,
+				3601399E1D5A815E00BCABC3 /* UIScrollView+EmptyDataSet.m in Sources */,
 				36600DAC1D486E5900FE4C53 /* CustomCell.swift in Sources */,
 				362E1F531D33F5720062B9CD /* CustomPointAnnotation.swift in Sources */,
 				361C26491D36D9650048B09B /* Reachability.swift in Sources */,
