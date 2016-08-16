@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E9BAE06E943422491D3007158CC858E7'
-               BlueprintName = 'UberRides'
+               BlueprintIdentifier = '59C5734CBDBC16DD52556632EF13C40B'
+               BlueprintName = 'KCFloatingActionButton'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'UberRides.framework'>
+               BuildableName = 'KCFloatingActionButton.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

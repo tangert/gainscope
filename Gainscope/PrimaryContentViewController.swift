@@ -14,7 +14,7 @@ import AddressBookUI
 import NotificationCenter
 import AFNetworking
 
-class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, PulleyPrimaryContentControllerDelegate {
+class PrimaryContentViewController: UIViewController {
         
     //Yelp Client info
     var yelpClient: YelpClient!
@@ -58,51 +58,7 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
     var startLocation:CLLocation!
     var lastLocation: CLLocation!
     var traveledDistance:Double = 0
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        //getting the current location and centering the map
-        let location = locations.last
-        
-        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
-        
-        self.map.setRegion(region, animated: true)
-        self.locationManager.stopUpdatingLocation()
-        
-        //tracking distance traveled to determine duplicate API calls.
-        if startLocation == nil {
-            startLocation = locations.first
-        } else {
-            if let lastLocation = locations.last {
-                let distance = startLocation.distanceFromLocation(lastLocation)
-                let lastDistance = lastLocation.distanceFromLocation(lastLocation)
-                traveledDistance += lastDistance
-            }
-        }
-        lastLocation = locations.last
-        
-        
-    }
-    
     var locationFound = true
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("Error: " + error.localizedDescription)
-        
-        let alert = UIAlertController(title: "Oh crap!", message: "We couldn't find your current location.", preferredStyle: UIAlertControllerStyle.Alert)
-        
-        self.locationFound = false
-        
-        let alertAction = UIAlertAction(title: "lol aight", style: UIAlertActionStyle.Default) {
-            (UIAlertAction) -> Void in
-        }
-        alert.addAction(alertAction)
-        self.presentViewController(alert, animated: true)
-        {
-            () -> Void in
-        }
-        
-    }
     
     //button and map initializations
     @IBOutlet weak var map: MKMapView!
@@ -239,60 +195,42 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
     
     func createContent(term: String, button: UIButton, progress: NVActivityIndicatorView) {
         
-        self.yelpClient.searchWithTerm(term, completion: { (results: [Business]!, error: NSError!) -> Void in
-            
-            for business in results {
-                self.createMapPin(term, business: business)
-                DataManager.sharedInstance.addItem(business)
-                
-            }
-            
-            func setImage(image: String) {
-                self.animateButton(button, filledImage: image)
-            }
-            
-            if button.tag == 1 {
-                setImage("\(term)Button.png")
-            } else if button.tag == 2 {
-                setImage("\(term)Button.png")
-
-            } else if button.tag == 3 {
-                setImage("\(term)Button.png")
-            }
-            
-            progress.stopAnimation()
-            progress.hidesWhenStopped = true
-            
-        })
-        
-        /*
          if Reachability.isConnectedToNetwork() == true {
          
-         print("Internet is ok.")
+            print("Internet is ok.")
          
-         self.yelpClient.searchWithTerm(term, completion: { (results: [Business]!, error: NSError!) -> Void in
+            self.yelpClient.searchWithTerm(term, completion: { (results: [Business]!, error: NSError!) -> Void in
          
-         for business in results {
+                for business in results {
+                    self.createMapPin(term, business: business)
+                    DataManager.sharedInstance.addItem(business)
+                }
          
-         self.createMapPin(term, business: business)
-         DataManager.sharedInstance.addItem(business)
+                func setImage(image: String) {
+                    self.animateButton(button, filledImage: image)
+                }
          
-         }
+                if button.tag == 1 {
+                    setImage("\(term)Button.png")
+                } else if button.tag == 2 {
+                    setImage("\(term)Button.png")
+                } else if button.tag == 3 {
+                    setImage("\(term)Button.png")
+                }
+         
+                progress.stopAnimation()
+                progress.hidesWhenStopped = true
          })
          
          } else {
          
          let alert = UIAlertController(title: "No internet!", message: "Try finding your gains when you are connected.", preferredStyle: UIAlertControllerStyle.Alert)
-         let alertAction = UIAlertAction(title: "Fine", style: UIAlertActionStyle.Default) {
-         (UIAlertAction) -> Void in
-         }
-         alert.addAction(alertAction)
-         self.presentViewController(alert, animated: true)
-         {
-         () -> Void in
-         }
          
-         } */
+            let alertAction = UIAlertAction(title: "Fine", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in }
+            alert.addAction(alertAction)
+            self.presentViewController(alert, animated: true) { () -> Void in }
+         
+         }
         
     }
     
@@ -355,6 +293,11 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
         
     }
     
+}
+
+//MARK: Pulley delegate methods
+extension PrimaryContentViewController: PulleyPrimaryContentControllerDelegate {
+    
     func drawerChangedDistanceFromBottom(drawer: PulleyViewController, distance: CGFloat) {
         
         if distance <= 364.0 {
@@ -365,8 +308,60 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
         }
     }
     
-    //MARK: Mapview delegate methods
+}
+
+//MARK: Location manager delegate methods
+extension PrimaryContentViewController: CLLocationManagerDelegate {
     
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        //getting the current location and centering the map
+        let location = locations.last
+        
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
+        
+        self.map.setRegion(region, animated: true)
+        self.locationManager.stopUpdatingLocation()
+        
+        //tracking distance traveled to determine duplicate API calls.
+        if startLocation == nil {
+            startLocation = locations.first
+        } else {
+            if let lastLocation = locations.last {
+                let distance = startLocation.distanceFromLocation(lastLocation)
+                let lastDistance = lastLocation.distanceFromLocation(lastLocation)
+                traveledDistance += lastDistance
+            }
+        }
+        lastLocation = locations.last
+        
+        
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Error: " + error.localizedDescription)
+        
+        let alert = UIAlertController(title: "Oh crap!", message: "We couldn't find your current location.", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        self.locationFound = false
+        
+        let alertAction = UIAlertAction(title: "lol aight", style: UIAlertActionStyle.Default) {
+            (UIAlertAction) -> Void in
+        }
+        alert.addAction(alertAction)
+        self.presentViewController(alert, animated: true)
+        {
+            () -> Void in
+        }
+        
+    }
+    
+    
+}
+
+//MARK: Mapview delegate methods
+extension PrimaryContentViewController: MKMapViewDelegate {
     //animates the appeareance of map pins
     func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {
         
@@ -446,8 +441,6 @@ class PrimaryContentViewController: UIViewController, MKMapViewDelegate, CLLocat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
     
 }
 

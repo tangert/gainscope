@@ -72,14 +72,18 @@ class CustomCell: UITableViewCell {
     
     func animateButton(button: UIButton) {
         
-        button.transform = CGAffineTransformMakeScale(0.125, 0.125)
+        button.transform = CGAffineTransformMakeScale(0.6, 0.6)
         
-        UIView.animateWithDuration(0.25, delay: 0,usingSpringWithDamping: 0.2,
-                                   initialSpringVelocity: 9.0,
+        UIView.animateWithDuration(0.2,
+                                   delay: 0,
+                                   usingSpringWithDamping: CGFloat(0.20),
+                                   initialSpringVelocity: CGFloat(6.0),
                                    options: UIViewAnimationOptions.AllowUserInteraction,
                                    animations: {
                                     button.transform = CGAffineTransformIdentity
-            }, completion: nil)
+            },
+                                   completion: { Void in()  }
+        )
         
     }
 }

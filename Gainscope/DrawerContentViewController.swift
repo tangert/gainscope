@@ -13,7 +13,7 @@ import Kingfisher
 import MapKit
 import UberRides
 
-class DrawerContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, MKMapViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, PulleyDrawerViewControllerDelegate {
+class DrawerContentViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -35,23 +35,18 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.tableFooterView = UIView()
     }
     
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-        return UIImage(named: "noData.png")
-    }
-    
     func updateTableViewData(notification: NSNotification) {
         UIView.transitionWithView(self.tableView, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
-        //self.tableView.reloadData()
-        //print("Notfication from PrimaryView sent. ListItem Count: \(DataManager.sharedInstance.listItems.count)")
     }
     
+}
+
+extension DrawerContentViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
-        //1 search = 20 results.
-        //2 searches = 40 results
-        //therefore # of results/20 = number of searches
+    
+        //# of results/20 = number of searches
         //# of searches = # of sections
-        
         return (DataManager.sharedInstance.listItems.count)/20
     }
     
@@ -64,7 +59,6 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:CustomCell? = tableView.dequeueReusableCellWithIdentifier("cell") as! CustomCell?
-        
         let data = DataManager.sharedInstance.listItems[indexPath.row]
         
         if data.phone != nil {
@@ -90,9 +84,9 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         let string = data.categories
+        
         if let range = string!.rangeOfString(",") {
             cell?.categories.text = ("\(string!.substringToIndex(range.startIndex))  •  \(data.distance!)")
-            
         } else {
             cell?.categories.text = ("\(data.categories!)  •  \(data.distance!)")
             
@@ -105,7 +99,20 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         return cell!
     }
     
-    // MARK: Drawer Content View Controller Delegate
+}
+
+extension DrawerContentViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+ 
+    func imageForEmptyDataSet(scrollView: UIScrollView) -> UIImage? {
+        return UIImage(named: "noData.png")
+    }
+    
+}
+
+
+// MARK: Drawer Content View Controller Delegate
+extension DrawerContentViewController: PulleyDrawerViewControllerDelegate {
+    
     func collapsedDrawerHeight() -> CGFloat {
         return 26.0
     }
@@ -116,7 +123,15 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
     
     func drawerPositionDidChange(drawer: PulleyViewController) {
         tableView.scrollEnabled = drawer.drawerPosition == .Open
+        
+//        if drawer.drawerPosition != .Open {
+//            searchBar.resignFirstResponder()
+//        }
     }
+    
+}
+
+extension DrawerContentViewController: MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
@@ -128,5 +143,14 @@ class DrawerContentViewController: UIViewController, UITableViewDelegate, UITabl
         let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
         mapItem.openInMapsWithLaunchOptions(launchOptions)
     }
+}
+
+extension DrawerContentViewController: UISearchBarDelegate {
     
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        
+        if let drawerVC = self.parentViewController as? PulleyViewController {
+            drawerVC.setDrawerPosition(.Open, animated: true)
+        }
+    }
 }

@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class CustomPointAnnotation: MKPointAnnotation
-{
+class CustomPointAnnotation: MKPointAnnotation {
+    
     var pinCustomImageName:String!
 }

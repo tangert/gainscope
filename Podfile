@@ -35,5 +35,6 @@ pod 'Kingfisher', '~> 2.4'
 pod 'Cosmos', '~> 1.2'
 pod 'SnapKit', '~> 0.15.0'
 pod 'NVActivityIndicatorView'
+pod 'KCFloatingActionButton'
 
 end

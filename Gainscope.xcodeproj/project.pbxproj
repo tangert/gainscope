@@ -163,16 +163,6 @@
 			name = "Other files";
 			sourceTree = "<group>";
 		};
-		361B5DDC1D3581E800C9BCAA /* MVC */ = {
-			isa = PBXGroup;
-			children = (
-				363005221D2F1F5E00420D2D /* Models */,
-				363005231D2F1F6400420D2D /* Controllers */,
-				363005241D2F1F7400420D2D /* Views */,
-			);
-			name = MVC;
-			sourceTree = "<group>";
-		};
 		3630051D1D2F1D1100420D2D /* Yelp API */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,7 +256,9 @@
 		36E112F01D2F1B6E00545BE0 /* Gainscope */ = {
 			isa = PBXGroup;
 			children = (
-				361B5DDC1D3581E800C9BCAA /* MVC */,
+				363005221D2F1F5E00420D2D /* Models */,
+				363005231D2F1F6400420D2D /* Controllers */,
+				363005241D2F1F7400420D2D /* Views */,
 				3630051E1D2F1D3D00420D2D /* Other files */,
 				36E112FD1D2F1B6E00545BE0 /* Info.plist */,
 			);
