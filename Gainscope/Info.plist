@@ -47,5 +47,24 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UberClientID</key>
+	<string>[7JCFFlVSN8KRSXybg1Ijo642lv4b5k8d]</string>
+	<key>UberDisplayName</key>
+	<string>[Gainscope]</string>
+	<key>UberCallbackURIs</key>
+	<array>
+		<dict>
+			<key>UberCallbackURIType</key>
+			<string>General</string>
+			<key>URIString</key>
+			<string>callback://your_callback_uri</string>
+		</dict>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Bariol_Regular_Italic.otf</string>
+		<string>Bariol_Regular.otf</string>
+		<string>Bariol_Bold.otf</string>
+	</array>
 </dict>
 </plist>

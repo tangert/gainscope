@@ -22,8 +22,29 @@ class CustomCell: UITableViewCell {
     var latitude: Double?
     var longitude: Double?
     
+    @IBOutlet weak var backgroundCardView: UIView!
+    
     @IBOutlet weak var phoneButton: UIButton!
     @IBOutlet weak var navButton: UIButton!
+    
+     func updateUI() {
+        
+        backgroundCardView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
+        contentView.backgroundColor = UIColor.clearColor()
+        
+        let pillShape: CGFloat = 45
+        let mildRound: CGFloat = 10
+        
+        backgroundCardView.layer.cornerRadius = mildRound
+        backgroundCardView.layer.masksToBounds = true
+        
+//        backgroundCardView.layer.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.2).CGColor
+//        backgroundCardView.layer.shadowOffset = CGSizeMake(0, 0)
+//        backgroundCardView.layer.shadowOpacity = 0.8
+//        
+
+    }
+    
     
     @IBAction func callPhone(sender: AnyObject) {
         self.animateButton(self.phoneButton)
@@ -86,6 +107,7 @@ class CustomCell: UITableViewCell {
         )
         
     }
+    
 }
 
 extension UIView {

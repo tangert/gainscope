@@ -19,6 +19,9 @@ class DrawerContentViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var gripperView: UIView!
     @IBOutlet weak var seperatorHeightConstraint: NSLayoutConstraint!
+    var selectedIndexPath: NSIndexPath? = nil
+    
+    var locationData = PrimaryContentViewController.sharedInstance.locationManager
     
     override func viewDidLoad() {
         super.viewDidLoad()        
@@ -26,6 +29,7 @@ class DrawerContentViewController: UIViewController {
         
         gripperView.layer.cornerRadius = 2.5
         seperatorHeightConstraint.constant = 1.0 / UIScreen.mainScreen().scale
+        tableView.separatorStyle = .None
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -55,10 +59,47 @@ extension DrawerContentViewController: UITableViewDataSource, UITableViewDelegat
         return DataManager.sharedInstance.listItems.count
     }
     
+    //expanding tableview
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        let index = indexPath
+        
+        if selectedIndexPath != nil {
+            if index == selectedIndexPath {
+                return 170
+            } else {
+                return 100
+            }
+        } else {
+            return 100
+        }
+    }
+    
+    //expanding tableview
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        switch selectedIndexPath {
+        case nil:
+            selectedIndexPath = indexPath
+        default:
+            if selectedIndexPath! == indexPath {
+                selectedIndexPath = nil
+            } else {
+                selectedIndexPath = indexPath
+            }
+        }
+        
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        tableView.separatorStyle = .None
+        
         var cell:CustomCell? = tableView.dequeueReusableCellWithIdentifier("cell") as! CustomCell?
+        
+        cell?.updateUI()
+        
         let data = DataManager.sharedInstance.listItems[indexPath.row]
         
         if data.phone != nil {
@@ -73,7 +114,9 @@ extension DrawerContentViewController: UITableViewDataSource, UITableViewDelegat
         cell?.longitude = data.longitude!
         
         //caching images
-        cell?.companyImage.layer.cornerRadius = 10
+        
+        cell?.companyImage.layer.cornerRadius = (cell?.companyImage.frame.size.height)!/2
+        cell?.companyImage.layer.borderWidth = 0
         cell?.companyImage.layer.masksToBounds = true
         
         if let URLString = data.imageURL?.absoluteString {
@@ -114,7 +157,7 @@ extension DrawerContentViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDel
 extension DrawerContentViewController: PulleyDrawerViewControllerDelegate {
     
     func collapsedDrawerHeight() -> CGFloat {
-        return 26.0
+        return 36.0
     }
     
     func partialRevealDrawerHeight() -> CGFloat {

@@ -14,6 +14,9 @@
 		361C26491D36D9650048B09B /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361C26481D36D9650048B09B /* Reachability.swift */; };
 		361C264B1D36D9A00048B09B /* PrimaryContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361C264A1D36D9A00048B09B /* PrimaryContentViewController.swift */; };
 		362E1F531D33F5720062B9CD /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362E1F521D33F5720062B9CD /* CustomPointAnnotation.swift */; };
+		3650DB481D67E2A8002A9538 /* Bariol_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3650DB471D67E0A4002A9538 /* Bariol_Bold.ttf */; };
+		3650DB491D67E2AB002A9538 /* Bariol_Regular_Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3650DB451D67DFF6002A9538 /* Bariol_Regular_Italic.ttf */; };
+		3650DB4A1D67E2AD002A9538 /* Bariol_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3650DB461D67DFF6002A9538 /* Bariol_Regular.ttf */; };
 		36600DAC1D486E5900FE4C53 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36600DAB1D486E5900FE4C53 /* CustomCell.swift */; };
 		36600DB21D49066F00FE4C53 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36600DB11D49066F00FE4C53 /* DataManager.swift */; };
 		36850E9C1D3D2AE7006D4652 /* tidbits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36850E9B1D3D2AE7006D4652 /* tidbits.swift */; };
@@ -62,6 +65,9 @@
 		361C26481D36D9650048B09B /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		361C264A1D36D9A00048B09B /* PrimaryContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryContentViewController.swift; sourceTree = "<group>"; };
 		362E1F521D33F5720062B9CD /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
+		3650DB451D67DFF6002A9538 /* Bariol_Regular_Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Regular_Italic.ttf; sourceTree = "<group>"; };
+		3650DB461D67DFF6002A9538 /* Bariol_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Regular.ttf; sourceTree = "<group>"; };
+		3650DB471D67E0A4002A9538 /* Bariol_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Bold.ttf; sourceTree = "<group>"; };
 		36600DAB1D486E5900FE4C53 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		36600DB11D49066F00FE4C53 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		36850E9B1D3D2AE7006D4652 /* tidbits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tidbits.swift; sourceTree = "<group>"; };
@@ -175,8 +181,9 @@
 		3630051E1D2F1D3D00420D2D /* Other files */ = {
 			isa = PBXGroup;
 			children = (
-				368F0B181D5817CF00CD9F99 /* Gainscope-Bridging-Header.h */,
-				36E112F11D2F1B6E00545BE0 /* AppDelegate.swift */,
+				3650DB471D67E0A4002A9538 /* Bariol_Bold.ttf */,
+				3650DB451D67DFF6002A9538 /* Bariol_Regular_Italic.ttf */,
+				3650DB461D67DFF6002A9538 /* Bariol_Regular.ttf */,
 				36850E9B1D3D2AE7006D4652 /* tidbits.swift */,
 			);
 			name = "Other files";
@@ -256,6 +263,8 @@
 		36E112F01D2F1B6E00545BE0 /* Gainscope */ = {
 			isa = PBXGroup;
 			children = (
+				368F0B181D5817CF00CD9F99 /* Gainscope-Bridging-Header.h */,
+				36E112F11D2F1B6E00545BE0 /* AppDelegate.swift */,
 				363005221D2F1F5E00420D2D /* Models */,
 				363005231D2F1F6400420D2D /* Controllers */,
 				363005241D2F1F7400420D2D /* Views */,
@@ -382,6 +391,7 @@
 				TargetAttributes = {
 					36E112ED1D2F1B6E00545BE0 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 8TWVWBQE3T;
 						LastSwiftMigration = 0800;
 					};
 					36E113011D2F1B6E00545BE0 = {
@@ -421,8 +431,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3650DB481D67E2A8002A9538 /* Bariol_Bold.ttf in Resources */,
+				3650DB491D67E2AB002A9538 /* Bariol_Regular_Italic.ttf in Resources */,
 				36E112FC1D2F1B6E00545BE0 /* LaunchScreen.storyboard in Resources */,
 				36E112F91D2F1B6E00545BE0 /* Assets.xcassets in Resources */,
+				3650DB4A1D67E2AD002A9538 /* Bariol_Regular.ttf in Resources */,
 				36E5FF5E1D50281400FD75B4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -648,7 +661,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -670,6 +683,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = gainscope;
+				PROVISIONING_PROFILE = "1878d98a-a4a9-405c-b138-364c080efee0";
+				"PROVISIONING_PROFILE[sdk=*]" = "1878d98a-a4a9-405c-b138-364c080efee0";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Gainscope/Gainscope-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -710,6 +726,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = gainscope;
+				PROVISIONING_PROFILE = "1878d98a-a4a9-405c-b138-364c080efee0";
+				"PROVISIONING_PROFILE[sdk=*]" = "1878d98a-a4a9-405c-b138-364c080efee0";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Gainscope/Gainscope-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -725,10 +744,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Gainscope/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tangert.Gainscope;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Gainscope/Gainscope-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -743,10 +765,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Gainscope/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tangert.Gainscope;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Gainscope/Gainscope-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

@@ -23,6 +23,7 @@ class PrimaryContentViewController: UIViewController {
     let yelpToken = "yULdo-JwtBGgi1uNRvW-Yprll86x2JlU"
     let yelpTokenSecret = "wvgz30HjKdqR9Ul0qKSyDd4ASCM"
     
+    static var sharedInstance = PrimaryContentViewController()
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
