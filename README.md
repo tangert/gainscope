@@ -8,6 +8,7 @@ Main APIs used:
 
 #Cocoapods:
 #Networking
+- pod 'UberRides': Uber
 - pod 'AFNetworking', '~> 2.5': HTTP networking 
 - pod 'BDBOAuth1Manager': OAuth manager
 
@@ -18,3 +19,4 @@ Main APIs used:
 #UIstuff
 - pod 'Cosmos', '~> 1.2': star ratings in custom tableview cell
 - pod 'SnapKit', '~> 0.15.0': programmatic autolayout constraints
+- pod 'NVActivityIndicatorView': custom loading indicator views
