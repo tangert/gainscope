@@ -37,11 +37,48 @@ class CustomCell: UITableViewCell {
         
         backgroundCardView.layer.cornerRadius = mildRound
         backgroundCardView.layer.masksToBounds = true
+
+    }
+    
+    func bindData(data: Business) {
         
-//        backgroundCardView.layer.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.2).CGColor
-//        backgroundCardView.layer.shadowOffset = CGSizeMake(0, 0)
-//        backgroundCardView.layer.shadowOpacity = 0.8
-//        
+        //Location info
+        self.location.text = data.name!
+        self.latitude = data.latitude!
+        self.longitude = data.longitude!
+        
+        //Phone number
+        if data.phone != nil {
+            self.phoneNumber = data.phone!
+        } else {
+            self.phoneNumber = nil
+        }
+        
+        //Image caching and stylization
+        let circleRadius = (self.companyImage.frame.size.height)/2
+        self.companyImage.layer.cornerRadius = circleRadius
+        self.companyImage.layer.borderWidth = 0
+        self.companyImage.layer.masksToBounds = true
+        
+        if let URLString = data.imageURL?.absoluteString {
+            self.companyImage.kf_setImageWithURL(NSURL(string: URLString)!, placeholderImage: UIImage(named: "emptyCell.png"))
+        } else {
+            self.companyImage.image = UIImage(named: "emptyCell.png")
+        }
+        
+        //Category
+        let string = data.categories
+        if let range = string!.rangeOfString(",") {
+            self.categories.text = ("\(string!.substringToIndex(range.startIndex))  •  \(data.distance!)")
+        } else {
+            self.categories.text = ("\(data.categories!)  •  \(data.distance!)")
+            
+        }
+        
+        //Rating/reviews
+        self.reviewCount.text = "\(data.reviewCount!) reviews"
+        self.rating.rating = data.rating as! Double
+        self.rating.settings.updateOnTouch = false
 
     }
     

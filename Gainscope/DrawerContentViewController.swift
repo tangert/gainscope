@@ -21,11 +21,21 @@ class DrawerContentViewController: UIViewController {
     @IBOutlet weak var seperatorHeightConstraint: NSLayoutConstraint!
     var selectedIndexPath: NSIndexPath? = nil
     
+    private var data = DataManager.sharedInstance.listItems
+    private var searchData = [Business]()
+
+    private var tap: UITapGestureRecognizer!
+
+    
     var locationData = PrimaryContentViewController.sharedInstance.locationManager
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DrawerContentViewController.updateTableViewData(_:)) , name: "updateTableViewData", object: nil)
+        
+        tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        searchBar.delegate = self
+        //searchData = data
         
         gripperView.layer.cornerRadius = 2.5
         seperatorHeightConstraint.constant = 1.0 / UIScreen.mainScreen().scale
@@ -40,23 +50,31 @@ class DrawerContentViewController: UIViewController {
     }
     
     func updateTableViewData(notification: NSNotification) {
-        UIView.transitionWithView(self.tableView, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
+        UIView.transitionWithView(self.tableView, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+            
+            self.data = notification.object as! [Business]
+            self.searchData = self.data
+            
+            self.tableView.reloadData()
+        }, completion: nil)
     }
+    
     
 }
 
 extension DrawerContentViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    
-        //# of results/20 = number of searches
-        //# of searches = # of sections
-        return (DataManager.sharedInstance.listItems.count)/20
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return DataManager.sharedInstance.listItems.count
+        if searchData.count != 0 {
+            return searchData.count
+        } else {
+            return DataManager.sharedInstance.listItems.count
+        }
     }
     
     //expanding tableview
@@ -95,50 +113,16 @@ extension DrawerContentViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         tableView.separatorStyle = .None
-        
         var cell:CustomCell? = tableView.dequeueReusableCellWithIdentifier("cell") as! CustomCell?
         
         cell?.updateUI()
         
-        let data = DataManager.sharedInstance.listItems[indexPath.row]
-        
-        if data.phone != nil {
-            cell?.phoneNumber = data.phone!
-            
+        if searchBar.text != "" &&  self.searchData.count != 0 {
+            cell?.bindData(self.searchData[indexPath.row])
         } else {
-            cell?.phoneNumber = nil
+            cell?.bindData(DataManager.sharedInstance.listItems[indexPath.row])
         }
-        
-        cell?.location.text = data.name!
-        cell?.latitude = data.latitude!
-        cell?.longitude = data.longitude!
-        
-        //caching images
-        
-        cell?.companyImage.layer.cornerRadius = (cell?.companyImage.frame.size.height)!/2
-        cell?.companyImage.layer.borderWidth = 0
-        cell?.companyImage.layer.masksToBounds = true
-        
-        if let URLString = data.imageURL?.absoluteString {
-            cell?.companyImage.kf_setImageWithURL(NSURL(string: URLString)!, placeholderImage: UIImage(named: "emptyCell.png"))
-            
-        } else {
-            cell?.companyImage.image = UIImage(named: "emptyCell.png")
-        }
-        
-        let string = data.categories
-        
-        if let range = string!.rangeOfString(",") {
-            cell?.categories.text = ("\(string!.substringToIndex(range.startIndex))  •  \(data.distance!)")
-        } else {
-            cell?.categories.text = ("\(data.categories!)  •  \(data.distance!)")
-            
-        }
-        
-        cell?.reviewCount.text = "\(data.reviewCount!) reviews"
-        cell?.rating.rating = data.rating as! Double
-        cell?.rating.settings.updateOnTouch = false
-        
+
         return cell!
     }
     
@@ -152,12 +136,10 @@ extension DrawerContentViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDel
     
 }
 
-
-// MARK: Drawer Content View Controller Delegate
 extension DrawerContentViewController: PulleyDrawerViewControllerDelegate {
     
     func collapsedDrawerHeight() -> CGFloat {
-        return 36.0
+        return 57.0
     }
     
     func partialRevealDrawerHeight() -> CGFloat {
@@ -167,9 +149,9 @@ extension DrawerContentViewController: PulleyDrawerViewControllerDelegate {
     func drawerPositionDidChange(drawer: PulleyViewController) {
         tableView.scrollEnabled = drawer.drawerPosition == .Open
         
-//        if drawer.drawerPosition != .Open {
-//            searchBar.resignFirstResponder()
-//        }
+        if drawer.drawerPosition != .Open {
+            searchBar.resignFirstResponder()
+        }
     }
     
 }
@@ -191,9 +173,29 @@ extension DrawerContentViewController: MKMapViewDelegate {
 extension DrawerContentViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        
+        view.addGestureRecognizer(tap)
         if let drawerVC = self.parentViewController as? PulleyViewController {
             drawerVC.setDrawerPosition(.Open, animated: true)
         }
     }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        view.removeGestureRecognizer(tap)
+    }
+    
+    func handleTap() {
+        view.endEditing(true)
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            searchData = data
+        } else {
+            searchData = searchData.filter {
+                return $0.name!.containsString(searchText)
+            }
+        }
+        tableView.reloadData()
+    }
+    
 }
