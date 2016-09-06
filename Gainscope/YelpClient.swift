@@ -28,6 +28,7 @@ class YelpClient: BDBOAuth1RequestOperationManager  {
         super.init(coder: aDecoder)
     }
     
+    
     init(consumerKey key: String!, consumerSecret secret: String!, accessToken: String!, accessSecret: String!) {
         self.accessToken = accessToken
         self.accessSecret = accessSecret
@@ -49,7 +50,6 @@ class YelpClient: BDBOAuth1RequestOperationManager  {
             // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
             
             var locationData = PrimaryContentViewController.sharedInstance.locationManager
-            
             var lat = (locationData.location?.coordinate.latitude)!
             var long = (locationData.location?.coordinate.longitude)!
             
@@ -68,7 +68,7 @@ class YelpClient: BDBOAuth1RequestOperationManager  {
             }
             
             print(parameters)
-            
+  
             return self.GET("search", parameters: parameters, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                 let dictionaries = response["businesses"] as? [NSDictionary]
                 if dictionaries != nil {

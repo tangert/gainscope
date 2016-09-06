@@ -8,10 +8,11 @@
 
 import UIKit
 
- class Business: NSObject {
+class Business: NSObject {
  
     let name: String?
     let address: String?
+    let URL: String?
     let imageURL: NSURL?
     let categories: String?
     let distance: String?
@@ -95,6 +96,7 @@ import UIKit
         rating = dictionary["rating"] as? NSNumber
         reviewCount = dictionary["review_count"] as? NSNumber
         phone = dictionary["display_phone"] as? String
+        URL = dictionary["url"] as? String
  
  }
  

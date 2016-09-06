@@ -13,13 +13,12 @@
 		361B5DDA1D357D2B00C9BCAA /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B5DD91D357D2B00C9BCAA /* Business.swift */; };
 		361C26491D36D9650048B09B /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361C26481D36D9650048B09B /* Reachability.swift */; };
 		361C264B1D36D9A00048B09B /* PrimaryContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361C264A1D36D9A00048B09B /* PrimaryContentViewController.swift */; };
-		362E1F531D33F5720062B9CD /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362E1F521D33F5720062B9CD /* CustomPointAnnotation.swift */; };
 		3650DB481D67E2A8002A9538 /* Bariol_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3650DB471D67E0A4002A9538 /* Bariol_Bold.ttf */; };
 		3650DB491D67E2AB002A9538 /* Bariol_Regular_Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3650DB451D67DFF6002A9538 /* Bariol_Regular_Italic.ttf */; };
 		3650DB4A1D67E2AD002A9538 /* Bariol_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3650DB461D67DFF6002A9538 /* Bariol_Regular.ttf */; };
 		36600DAC1D486E5900FE4C53 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36600DAB1D486E5900FE4C53 /* CustomCell.swift */; };
 		36600DB21D49066F00FE4C53 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36600DB11D49066F00FE4C53 /* DataManager.swift */; };
-		36850E9C1D3D2AE7006D4652 /* tidbits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36850E9B1D3D2AE7006D4652 /* tidbits.swift */; };
+		3672F9721D7DB35C004B37C8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3672F9711D7DB35C004B37C8 /* SettingsViewController.swift */; };
 		3693CEC71D381AB7002DD8A7 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693CEC61D381AB7002DD8A7 /* YelpClient.swift */; };
 		369942751D4696C300CA04B7 /* DrawerContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369942741D4696C300CA04B7 /* DrawerContentViewController.swift */; };
 		36E112F21D2F1B6E00545BE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E112F11D2F1B6E00545BE0 /* AppDelegate.swift */; };
@@ -28,6 +27,9 @@
 		36E113071D2F1B6E00545BE0 /* GainscopeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E113061D2F1B6E00545BE0 /* GainscopeTests.swift */; };
 		36E113121D2F1B6E00545BE0 /* GainscopeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E113111D2F1B6E00545BE0 /* GainscopeUITests.swift */; };
 		36E5FF5E1D50281400FD75B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36E5FF5D1D50281400FD75B4 /* Main.storyboard */; };
+		36EA8F4D1D7F061200334429 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA8F4C1D7F061200334429 /* CustomAnnotation.swift */; };
+		36F7BDA11D69379200A43AA2 /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36F7BDA01D69379200A43AA2 /* DetailViewController.storyboard */; };
+		36F7BDA31D6937C300A43AA2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F7BDA21D6937C300A43AA2 /* DetailViewController.swift */; };
 		3856EFC90E907C59F6E890E8 /* Pods_GainscopeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1964604D9B61A9574C2B54 /* Pods_GainscopeTests.framework */; };
 		6C0D65A3B4C65F81EC346578 /* Pods_GainscopeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90943E8BE96123A4FDC6F979 /* Pods_GainscopeUITests.framework */; };
 		88216DED2AFCD0FA09E7A361 /* Pods_GainscopeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5984FD2EA53DB4BA1808A433 /* Pods_GainscopeTests.framework */; };
@@ -64,13 +66,12 @@
 		361B5DD91D357D2B00C9BCAA /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		361C26481D36D9650048B09B /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		361C264A1D36D9A00048B09B /* PrimaryContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryContentViewController.swift; sourceTree = "<group>"; };
-		362E1F521D33F5720062B9CD /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		3650DB451D67DFF6002A9538 /* Bariol_Regular_Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Regular_Italic.ttf; sourceTree = "<group>"; };
 		3650DB461D67DFF6002A9538 /* Bariol_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Regular.ttf; sourceTree = "<group>"; };
 		3650DB471D67E0A4002A9538 /* Bariol_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Bold.ttf; sourceTree = "<group>"; };
 		36600DAB1D486E5900FE4C53 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		36600DB11D49066F00FE4C53 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		36850E9B1D3D2AE7006D4652 /* tidbits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tidbits.swift; sourceTree = "<group>"; };
+		3672F9711D7DB35C004B37C8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		368F0B181D5817CF00CD9F99 /* Gainscope-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gainscope-Bridging-Header.h"; sourceTree = "<group>"; };
 		3693CEC61D381AB7002DD8A7 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		369942741D4696C300CA04B7 /* DrawerContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerContentViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +87,9 @@
 		36E113111D2F1B6E00545BE0 /* GainscopeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GainscopeUITests.swift; sourceTree = "<group>"; };
 		36E113131D2F1B6E00545BE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36E5FF5D1D50281400FD75B4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		36EA8F4C1D7F061200334429 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		36F7BDA01D69379200A43AA2 /* DetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
+		36F7BDA21D6937C300A43AA2 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3C1964604D9B61A9574C2B54 /* Pods_GainscopeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GainscopeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E66CA734C9F0B0F0EE8169E /* Pods-Gainscope.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gainscope.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gainscope/Pods-Gainscope.debug.xcconfig"; sourceTree = "<group>"; };
 		5984FD2EA53DB4BA1808A433 /* Pods_GainscopeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GainscopeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +161,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3610E3BE1D6DDB1C00D274FE /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				368F0B191D5817F400CD9F99 /* DZNEmptyDataSet */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		3610E3BF1D6DDBA600D274FE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3650DB471D67E0A4002A9538 /* Bariol_Bold.ttf */,
+				3650DB451D67DFF6002A9538 /* Bariol_Regular_Italic.ttf */,
+				3650DB461D67DFF6002A9538 /* Bariol_Regular.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		361B5DDB1D3581DF00C9BCAA /* Other files */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,22 +191,13 @@
 			name = "Other files";
 			sourceTree = "<group>";
 		};
-		3630051D1D2F1D1100420D2D /* Yelp API */ = {
-			isa = PBXGroup;
-			children = (
-				361B5DD91D357D2B00C9BCAA /* Business.swift */,
-				3693CEC61D381AB7002DD8A7 /* YelpClient.swift */,
-			);
-			name = "Yelp API";
-			sourceTree = "<group>";
-		};
 		3630051E1D2F1D3D00420D2D /* Other files */ = {
 			isa = PBXGroup;
 			children = (
-				3650DB471D67E0A4002A9538 /* Bariol_Bold.ttf */,
-				3650DB451D67DFF6002A9538 /* Bariol_Regular_Italic.ttf */,
-				3650DB461D67DFF6002A9538 /* Bariol_Regular.ttf */,
-				36850E9B1D3D2AE7006D4652 /* tidbits.swift */,
+				3610E3BF1D6DDBA600D274FE /* Fonts */,
+				3610E3BE1D6DDB1C00D274FE /* Libraries */,
+				368F0B181D5817CF00CD9F99 /* Gainscope-Bridging-Header.h */,
+				36E112F11D2F1B6E00545BE0 /* AppDelegate.swift */,
 			);
 			name = "Other files";
 			sourceTree = "<group>";
@@ -192,8 +205,12 @@
 		363005221D2F1F5E00420D2D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				36600DB11D49066F00FE4C53 /* DataManager.swift */,
+				36EA8F4C1D7F061200334429 /* CustomAnnotation.swift */,
+				36600DAB1D486E5900FE4C53 /* CustomCell.swift */,
+				361B5DD91D357D2B00C9BCAA /* Business.swift */,
+				3693CEC61D381AB7002DD8A7 /* YelpClient.swift */,
 				361C26481D36D9650048B09B /* Reachability.swift */,
-				3630051D1D2F1D1100420D2D /* Yelp API */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -201,13 +218,11 @@
 		363005231D2F1F6400420D2D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				368F0B191D5817F400CD9F99 /* DZNEmptyDataSet */,
 				36600DAA1D47BA3B00FE4C53 /* Pulley */,
-				362E1F521D33F5720062B9CD /* CustomPointAnnotation.swift */,
-				36600DAB1D486E5900FE4C53 /* CustomCell.swift */,
-				36600DB11D49066F00FE4C53 /* DataManager.swift */,
 				361C264A1D36D9A00048B09B /* PrimaryContentViewController.swift */,
 				369942741D4696C300CA04B7 /* DrawerContentViewController.swift */,
+				3672F9711D7DB35C004B37C8 /* SettingsViewController.swift */,
+				36F7BDA21D6937C300A43AA2 /* DetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -215,8 +230,9 @@
 		363005241D2F1F7400420D2D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				36E112FA1D2F1B6E00545BE0 /* LaunchScreen.storyboard */,
 				36E5FF5D1D50281400FD75B4 /* Main.storyboard */,
+				36F7BDA01D69379200A43AA2 /* DetailViewController.storyboard */,
+				36E112FA1D2F1B6E00545BE0 /* LaunchScreen.storyboard */,
 				36E112F81D2F1B6E00545BE0 /* Assets.xcassets */,
 			);
 			name = Views;
@@ -263,8 +279,6 @@
 		36E112F01D2F1B6E00545BE0 /* Gainscope */ = {
 			isa = PBXGroup;
 			children = (
-				368F0B181D5817CF00CD9F99 /* Gainscope-Bridging-Header.h */,
-				36E112F11D2F1B6E00545BE0 /* AppDelegate.swift */,
 				363005221D2F1F5E00420D2D /* Models */,
 				363005231D2F1F6400420D2D /* Controllers */,
 				363005241D2F1F7400420D2D /* Views */,
@@ -433,6 +447,7 @@
 			files = (
 				3650DB481D67E2A8002A9538 /* Bariol_Bold.ttf in Resources */,
 				3650DB491D67E2AB002A9538 /* Bariol_Regular_Italic.ttf in Resources */,
+				36F7BDA11D69379200A43AA2 /* DetailViewController.storyboard in Resources */,
 				36E112FC1D2F1B6E00545BE0 /* LaunchScreen.storyboard in Resources */,
 				36E112F91D2F1B6E00545BE0 /* Assets.xcassets in Resources */,
 				3650DB4A1D67E2AD002A9538 /* Bariol_Regular.ttf in Resources */,
@@ -585,18 +600,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				361C264B1D36D9A00048B09B /* PrimaryContentViewController.swift in Sources */,
+				36EA8F4D1D7F061200334429 /* CustomAnnotation.swift in Sources */,
 				36600DB21D49066F00FE4C53 /* DataManager.swift in Sources */,
 				3693CEC71D381AB7002DD8A7 /* YelpClient.swift in Sources */,
 				360870201D4AEF2B006956B0 /* PulleyPassthroughScrollView.swift in Sources */,
 				369942751D4696C300CA04B7 /* DrawerContentViewController.swift in Sources */,
-				36850E9C1D3D2AE7006D4652 /* tidbits.swift in Sources */,
 				3601399E1D5A815E00BCABC3 /* UIScrollView+EmptyDataSet.m in Sources */,
 				36600DAC1D486E5900FE4C53 /* CustomCell.swift in Sources */,
-				362E1F531D33F5720062B9CD /* CustomPointAnnotation.swift in Sources */,
+				3672F9721D7DB35C004B37C8 /* SettingsViewController.swift in Sources */,
 				361C26491D36D9650048B09B /* Reachability.swift in Sources */,
 				361B5DDA1D357D2B00C9BCAA /* Business.swift in Sources */,
 				36E112F21D2F1B6E00545BE0 /* AppDelegate.swift in Sources */,
 				360870221D4AEF3A006956B0 /* PulleyViewController.swift in Sources */,
+				36F7BDA31D6937C300A43AA2 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

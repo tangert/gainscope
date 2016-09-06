@@ -25,10 +25,18 @@ PODS:
     - AFNetworking/NSURLConnection (~> 2.6.0)
     - AFNetworking/NSURLSession (~> 2.6.0)
   - Cosmos (1.2.3)
+  - EasyTransition (1.2)
   - Kingfisher (2.4.1)
   - NVActivityIndicatorView (2.7)
   - ObjectMapper (1.1.5)
+  - PopupController (0.1.0)
+  - Realm (1.0.0):
+    - Realm/Headers (= 1.0.0)
+  - Realm/Headers (1.0.0)
+  - RealmSwift (1.0.0):
+    - Realm (= 1.0.0)
   - SnapKit (0.15.0)
+  - TagListView (1.0.0)
   - UberRides (0.4.2):
     - ObjectMapper (~> 1.1.0)
 
@@ -37,9 +45,13 @@ DEPENDENCIES:
   - AsyncSwift
   - BDBOAuth1Manager
   - Cosmos (~> 1.2)
+  - EasyTransition
   - Kingfisher (~> 2.4)
   - NVActivityIndicatorView
+  - PopupController
+  - RealmSwift
   - SnapKit (~> 0.15.0)
+  - TagListView (~> 1.0)
   - UberRides
 
 SPEC CHECKSUMS:
@@ -47,12 +59,17 @@ SPEC CHECKSUMS:
   AsyncSwift: 46a78bceb11f0e5bb52747f740d9692ec78d2d7c
   BDBOAuth1Manager: cd5a5872f355ca38180d52ca2dd844f0b0c84797
   Cosmos: efddd01b729956ad6335bc58bc92e5735a1d12a3
+  EasyTransition: 2ec063f34b6ce4b0de66498656c059489238a549
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
   NVActivityIndicatorView: dc80f18fb27ac92f0aa87246cc13dc39ed3e9ee0
   ObjectMapper: 528b1a6677a6acac7747edd508576983e76a9148
+  PopupController: fb329de274ab0cf9bf1f2758074287600082de1d
+  Realm: e15cd8e7c11d3e576f628ba0b7cb855269b4991c
+  RealmSwift: 3229306d020d96f83b335f87a0dcbf2cef0e6a2b
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
+  TagListView: 6bf4bded034c4c90b1e90d8cd3d8e1d852dba0a8
   UberRides: fa21246486f1c20b88392036501481f86e81a022
 
-PODFILE CHECKSUM: 421f4688863c9bab0ed9b2a2e988042f148629b4
+PODFILE CHECKSUM: 603ef12300a611918f64dba4f5a20fc37f010b31
 
 COCOAPODS: 1.0.0

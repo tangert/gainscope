@@ -23,7 +23,6 @@ class DrawerContentViewController: UIViewController {
     
     private var data = DataManager.sharedInstance.listItems
     private var searchData = [Business]()
-
     private var tap: UITapGestureRecognizer!
 
     
@@ -35,7 +34,6 @@ class DrawerContentViewController: UIViewController {
         
         tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         searchBar.delegate = self
-        //searchData = data
         
         gripperView.layer.cornerRadius = 2.5
         seperatorHeightConstraint.constant = 1.0 / UIScreen.mainScreen().scale
@@ -54,11 +52,10 @@ class DrawerContentViewController: UIViewController {
             
             self.data = notification.object as! [Business]
             self.searchData = self.data
-            
             self.tableView.reloadData()
+            
         }, completion: nil)
     }
-    
     
 }
 
@@ -73,25 +70,10 @@ extension DrawerContentViewController: UITableViewDataSource, UITableViewDelegat
         if searchData.count != 0 {
             return searchData.count
         } else {
-            return DataManager.sharedInstance.listItems.count
+            return data.count
         }
     }
     
-    //expanding tableview
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
-        let index = indexPath
-        
-        if selectedIndexPath != nil {
-            if index == selectedIndexPath {
-                return 170
-            } else {
-                return 100
-            }
-        } else {
-            return 100
-        }
-    }
     
     //expanding tableview
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -110,19 +92,35 @@ extension DrawerContentViewController: UITableViewDataSource, UITableViewDelegat
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
     
+    //expanding tableview
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        let index = indexPath
+        
+        if selectedIndexPath != nil {
+            if index == selectedIndexPath {
+                return 170
+            } else {
+                return 100
+            }
+        } else {
+            return 100
+        }
+    }
+
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         tableView.separatorStyle = .None
-        var cell:CustomCell? = tableView.dequeueReusableCellWithIdentifier("cell") as! CustomCell?
+        let cell:CustomCell? = tableView.dequeueReusableCellWithIdentifier("cell") as! CustomCell?
         
         cell?.updateUI()
         
         if searchBar.text != "" &&  self.searchData.count != 0 {
             cell?.bindData(self.searchData[indexPath.row])
-        } else {
-            cell?.bindData(DataManager.sharedInstance.listItems[indexPath.row])
+        }  else {
+            cell?.bindData(self.data[indexPath.row])
         }
-
         return cell!
     }
     

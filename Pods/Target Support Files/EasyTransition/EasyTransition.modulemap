@@ -1,0 +1,6 @@
+framework module EasyTransition {
+  umbrella header "EasyTransition-umbrella.h"
+
+  export *
+  module * { export * }
+}

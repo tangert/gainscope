@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import PopupController
 import Cosmos
 
 class CustomCell: UITableViewCell {
@@ -19,11 +20,14 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var rating: CosmosView!
     @IBOutlet weak var reviewCount: UILabel!
     var phoneNumber: String?
+    var URL: String?
     var latitude: Double?
     var longitude: Double?
     
+    @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var backgroundCardView: UIView!
     
+    @IBOutlet weak var detailViewButton: UIButton!
     @IBOutlet weak var phoneButton: UIButton!
     @IBOutlet weak var navButton: UIButton!
     
@@ -127,6 +131,21 @@ class CustomCell: UITableViewCell {
         mapItem.openInMapsWithLaunchOptions([MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
         
     }
+    
+    @IBAction func showDetail(sender: AnyObject) {
+        
+        PopupController
+            .create(self.parentViewController!)
+            .customize(
+                [
+                    .Animation(.FadeIn),
+                    .Scrollable(false),
+                    .BackgroundStyle(.BlackFilter(alpha: 0.7))
+                ]
+            )
+            .show(DetailViewController.instance())
+    }
+    
     
     func animateButton(button: UIButton) {
         

@@ -57,7 +57,7 @@
 			<key>UberCallbackURIType</key>
 			<string>General</string>
 			<key>URIString</key>
-			<string>callback://your_callback_uri</string>
+			<string>callback://localhost:8888</string>
 		</dict>
 	</array>
 	<key>UIAppFonts</key>

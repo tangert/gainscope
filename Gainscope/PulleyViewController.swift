@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import NotificationCenter
+import EasyTransition
+import Foundation
 
 /**
  *  The base delegate protocol for Pulley delegates.
@@ -55,6 +58,7 @@ private let kPulleyDefaultPartialRevealHeight: CGFloat = 264.0
 public class PulleyViewController: UIViewController, UIScrollViewDelegate, PulleyPassthroughScrollViewDelegate {
     
     // Interface Builder
+    
     
     /// When using with Interface Builder only! Connect a containing view to this outlet.
     @IBOutlet var primaryContentContainerView: UIView!
@@ -283,8 +287,36 @@ public class PulleyViewController: UIViewController, UIScrollViewDelegate, Pulle
         self.view.addSubview(drawerScrollView)
     }
     
+    
+    var transition: EasyTransition?
+    var setImageWithAnimate: (UIImage->Void)!
+    
+    func easyTransition(sender: AnyObject) {
+        let settingsVC = storyboard!.instantiateViewControllerWithIdentifier("Settings")
+        transition = EasyTransition(attachedViewController: settingsVC)
+        transition?.transitionDuration = 0.4
+        transition?.direction = .Right
+        transition?.margins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        transition?.sizeMax = CGSize(width: 330, height: CGFloat.max)
+        transition?.zTransitionSize = 100
+        transition?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.4)
+        presentViewController(settingsVC, animated: true, completion: nil)
+    }
+    
+    @IBOutlet weak var centerButton: UIBarButtonItem!
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let logoImage = UIImage(named: "navbarTitle")
+        self.navigationItem.titleView = UIImageView(image: logoImage)
+        self.navigationItem.titleView?.tintColor = UIColor.grayColor()
+        
+        self.navigationItem.rightBarButtonItem?.action = #selector(easyTransition(_:))
+        self.navigationItem.rightBarButtonItem?.target = self
+        
+        self.centerButton.action = #selector(centerMap(_:))
+        self.centerButton.target = self
         
         // IB Support
         if primaryContentViewController == nil || drawerContentViewController == nil
@@ -309,6 +341,10 @@ public class PulleyViewController: UIViewController, UIScrollViewDelegate, Pulle
         }
         
         scrollViewDidScroll(drawerScrollView)
+    }
+    
+    func centerMap(sender: UIBarButtonItem) {
+        NSNotificationCenter.defaultCenter().postNotificationName("centerMap", object: nil)
     }
     
     public override func viewDidLayoutSubviews() {

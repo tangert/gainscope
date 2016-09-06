@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "713A748B3F10A7E91884E5DA648E19BB"
+               BlueprintIdentifier = "FE06F417061B715F9CAD564147545704"
                BuildableName = "Pods_Gainscope.framework"
                BlueprintName = "Pods-Gainscope"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "713A748B3F10A7E91884E5DA648E19BB"
+            BlueprintIdentifier = "FE06F417061B715F9CAD564147545704"
             BuildableName = "Pods_Gainscope.framework"
             BlueprintName = "Pods-Gainscope"
             ReferencedContainer = "container:Pods.xcodeproj">

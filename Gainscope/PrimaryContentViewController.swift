@@ -13,6 +13,7 @@ import NVActivityIndicatorView
 import AddressBookUI
 import NotificationCenter
 import AFNetworking
+import PopupController
 
 class PrimaryContentViewController: UIViewController {
         
@@ -35,8 +36,6 @@ class PrimaryContentViewController: UIViewController {
         //Initial button setup
         self.buttonBackground.layer.cornerRadius = 20
         self.buttonBackground.clipsToBounds = true
-        self.centerButtonBackground.layer.cornerRadius = 20
-        self.centerButtonBackground.clipsToBounds = true
         
         let coffeeImage : UIImage = UIImage(named: "coffeeUnfilledGrey.png")!
         let gymImage: UIImage = UIImage(named: "gymUnfilledGrey.png")!
@@ -45,7 +44,6 @@ class PrimaryContentViewController: UIViewController {
         self.gymsButton.setImage(gymImage, forState: .Normal)
         self.foodButton.setImage(foodImage, forState: .Normal)
         
-        
         //map setup
         self.map.delegate = self
         self.locationManager.delegate = self
@@ -53,6 +51,9 @@ class PrimaryContentViewController: UIViewController {
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         self.map.showsUserLocation = true
+        self.map.showsCompass = true
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PrimaryContentViewController.centerMap(_:)), name: "centerMap", object: nil)
         
     }
 
@@ -63,14 +64,11 @@ class PrimaryContentViewController: UIViewController {
     
     //button and map initializations
     @IBOutlet weak var map: MKMapView!
-    
     @IBOutlet weak var coffeeButton: UIButton!
     @IBOutlet weak var gymsButton: UIButton!
     @IBOutlet weak var foodButton: UIButton!
     @IBOutlet weak var buttonBackground: UIView!
     
-    @IBOutlet weak var centerButton: UIButton!
-    @IBOutlet weak var centerButtonBackground: UIVisualEffectView!
     @IBOutlet weak var buttonsBottomConstraint: NSLayoutConstraint!
     private let buttonsBottomDistance: CGFloat = 0.0
     
@@ -80,17 +78,30 @@ class PrimaryContentViewController: UIViewController {
         }
     }
     
-    @IBAction func centerMap(sender: AnyObject) {
+    func centerMap(sender: AnyObject) {
         
         if let location = self.locationManager.location {
+            
             let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
             self.map.setRegion(region, animated: true)
+        
+        } else {
+            
+            let alert = UIAlertController(title: "Oh crap!", message: "We couldn't find your current location.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            self.locationFound = false
+            
+            let alertAction = UIAlertAction(title: "lol aight", style: UIAlertActionStyle.Default) {
+                (UIAlertAction) -> Void in
+            }
+            alert.addAction(alertAction)
+            self.presentViewController(alert, animated: true)
+            {
+                () -> Void in
+            }
         }
-        
-        
-    }
-    
+    }    
     
     enum Mode {
         case None
@@ -100,64 +111,78 @@ class PrimaryContentViewController: UIViewController {
     }
     
     var mode = Mode.None
+    var pressedAlready = false
+    var gsColor = UIColor(red: 249/255, green: 134/255, blue: 110/255, alpha: 1.0)
     
     @IBAction func buttonPressed(button: UIButton) {
         
-        var progress = NVActivityIndicatorView(
+        if Reachability.isConnectedToNetwork() == true && locationFound == true {
+        
+            let progress = NVActivityIndicatorView(
             frame: button.bounds,
             type: .BallScale,
-            color: UIColor(red: 249/255, green: 134/255, blue: 110/255, alpha: 1.0))
-        
-        if button.tag == 1 && self.mode != .Coffee {
-            print("Coffee button Pressed")
+            color: gsColor)
             
-            //loading animations
-            button.addSubview(progress)
-            initialPressAnimation(button)
-            progress.startAnimation()
+            if pressedAlready == false {
+                
+                if button.tag == 1 && self.mode != .Coffee {
+                    
+                    print("Coffee button Pressed")
+                    
+                    pressedAlready = true
+                    initialButtonSetup(button, progress: progress)
+                    createContent("coffee", button: button, progress: progress)
+                    setDefaultImage(gymsButton, image1: "gymUnfilledGrey.png", button2: foodButton, image2: "foodUnfilledGrey.png")
+                    mode = .Coffee
+                    
+                }
+                
+                if button.tag == 2 && self.mode != .Gym{
+                    print("Gym button Pressed")
+                    
+                    pressedAlready = true
+                    initialButtonSetup(button, progress: progress)
+                    createContent("gym", button: button, progress: progress)
+                    setDefaultImage(coffeeButton, image1: "coffeeUnfilledGrey.png", button2: foodButton, image2: "foodUnfilledGrey.png")
+                    mode = .Gym
+                }
+                
+                if button.tag == 3 && self.mode != .Food{
+                    print("Food button Pressed")
+                    
+                    pressedAlready = true
+                    initialButtonSetup(button, progress: progress)
+                    createContent("food", button: button, progress: progress)
+                    setDefaultImage(coffeeButton, image1: "coffeeUnfilledGrey.png", button2: gymsButton, image2: "gymUnfilledGrey.png")
+                    mode = .Food
+                }
+                
+            }
             
-            //previous data removal
-            removeMapPins()
-            DataManager.sharedInstance.removeItems()
-            
-            //does Yelp search, populates map with Pins, and animates selected button.
-            createContent("coffee", button: button, progress: progress)
-            
-            //sets the other two buttons to their default image
-            setDefaultImage(gymsButton, image1: "gymUnfilledGrey.png", button2: foodButton, image2: "foodUnfilledGrey.png")
-            
-            
-            mode = .Coffee
+            else {
+                errorPressAnimation(button)
+            }
             
         }
-        
-        if button.tag == 2 && self.mode != .Gym{
-            print("Gym button Pressed")
             
-            button.addSubview(progress)
-            initialPressAnimation(button)
-            progress.startAnimation()
-            removeMapPins()
-            DataManager.sharedInstance.removeItems()
-            
-            createContent("gym", button: button, progress: progress)
-            setDefaultImage(coffeeButton, image1: "coffeeUnfilledGrey.png", button2: foodButton, image2: "foodUnfilledGrey.png")
-            mode = .Gym
+            else {
+                
+                let alert = UIAlertController(title: "No connection!", message: "Try finding your gains later.", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                let alertAction = UIAlertAction(title: "Fine", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in }
+                alert.addAction(alertAction)
+                self.presentViewController(alert, animated: true) { () -> Void in }
+                
+            }
         }
-        
-        if button.tag == 3 && self.mode != .Food{
-            print("Food button Pressed")
-            
-            button.addSubview(progress)
-            initialPressAnimation(button)
-            progress.startAnimation()
-            removeMapPins()
-            DataManager.sharedInstance.removeItems()
-            
-            createContent("food", button: button, progress: progress)
-            setDefaultImage(coffeeButton, image1: "coffeeUnfilledGrey.png", button2: gymsButton, image2: "gymUnfilledGrey.png")
-            mode = .Food
-        }
+    
+    
+    func initialButtonSetup(button: UIButton, progress: NVActivityIndicatorView) {
+        button.addSubview(progress)
+        initialPressAnimation(button)
+        progress.startAnimation()
+        removeMapPins()
+        DataManager.sharedInstance.removeItems()
     }
     
     func initialPressAnimation(button: UIButton) {
@@ -165,6 +190,26 @@ class PrimaryContentViewController: UIViewController {
         UIView.animateWithDuration(0.125, animations: {
             button.transform = pressedState
             }, completion: nil)
+        
+    }
+    
+    func errorPressAnimation(button: UIButton) {
+        
+        let pressedState = CGAffineTransformMakeScale(0.8, 0.8)
+
+        UIView.animateWithDuration(0.125, animations: {
+            button.transform = pressedState
+        }, completion: nil)
+        
+        button.transform = CGAffineTransformIdentity
+        
+        let anim=CABasicAnimation(keyPath: "transform.rotation")
+        anim.toValue=NSNumber(double: -M_PI/16)
+        anim.fromValue=NSNumber(double: M_PI/16)
+        anim.duration=0.1
+        anim.repeatCount=1.5
+        anim.autoreverses=true
+        button.layer.addAnimation(anim, forKey: "iconShake")
         
     }
     
@@ -196,10 +241,6 @@ class PrimaryContentViewController: UIViewController {
     
     func createContent(term: String, button: UIButton, progress: NVActivityIndicatorView) {
         
-         if Reachability.isConnectedToNetwork() == true {
-         
-            print("Internet is ok.")
-         
             self.yelpClient.searchWithTerm(term, completion: { (results: [Business]!, error: NSError!) -> Void in
          
                 for business in results {
@@ -207,68 +248,44 @@ class PrimaryContentViewController: UIViewController {
                     DataManager.sharedInstance.addItem(business)
                 }
          
-                func setImage(image: String) {
-                    self.animateButton(button, filledImage: image)
-                }
-         
-                if button.tag == 1 {
-                    setImage("\(term)Button.png")
-                } else if button.tag == 2 {
-                    setImage("\(term)Button.png")
-                } else if button.tag == 3 {
-                    setImage("\(term)Button.png")
-                }
-         
+                self.animateButton(button, filledImage: "\(term)Button.png")
+                self.pressedAlready = false
                 progress.stopAnimation()
                 progress.hidesWhenStopped = true
          })
-         
-         } else {
-         
-         let alert = UIAlertController(title: "No internet!", message: "Try finding your gains when you are connected.", preferredStyle: UIAlertControllerStyle.Alert)
-         
-            let alertAction = UIAlertAction(title: "Fine", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in }
-            alert.addAction(alertAction)
-            self.presentViewController(alert, animated: true) { () -> Void in }
-         
-         }
         
     }
     
     func createMapPin(query: String, business: Business)  {
         
-        var annotationView:MKPinAnnotationView!
-        var pointAnnotation:CustomPointAnnotation! = CustomPointAnnotation()
-        
-        pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: business.latitude!, longitude: business.longitude!)
-        pointAnnotation.title = "\(business.name!)"
-        pointAnnotation.subtitle = business.address!
+        let coord = CLLocationCoordinate2DMake(business.latitude!, business.longitude!)
+        let annotation = CustomAnnotation(title: business.name!, subtitle: business.distance!, coordinate: coord, imageName: query, business: business)
         
         //Special pin images.
         
         if business.name! == "Starbucks" {
-            pointAnnotation.pinCustomImageName = "starbucks"
+            annotation.imageName = "starbucks"
         }
             
         else if business.name! == "Dunkin' Donuts" {
-            pointAnnotation.pinCustomImageName = "dunkin"
+            annotation.imageName = "dunkin"
         }
             
         else if business.name!.rangeOfString("Chipotle") != nil {
-            pointAnnotation.pinCustomImageName = "chipotle"
+            annotation.imageName = "chipotle"
         }
             
         else if business.name!.rangeOfString("CrossFit") != nil
             || business.name!.rangeOfString("Crossfit") != nil {
-            pointAnnotation.pinCustomImageName = "crossfit"
+            annotation.imageName = "crossfit"
             
         } else if business.name!.rangeOfString("YMCA") != nil {
-            pointAnnotation.pinCustomImageName = "ymca"
+            annotation.imageName = "ymca"
             
         }
             
         else if business.name!.rangeOfString("24") != nil {
-            pointAnnotation.pinCustomImageName = "24hour"
+            annotation.imageName = "24hour"
             
         }
             
@@ -282,15 +299,14 @@ class PrimaryContentViewController: UIViewController {
             business.categories!.rangeOfString("Ramen") != nil ||
             business.categories!.rangeOfString("Asian") != nil
         {
-            pointAnnotation.pinCustomImageName = "asian"
+            annotation.imageName = "asian"
         }
             
         else {
-            pointAnnotation.pinCustomImageName = query
+            annotation.imageName = query
         }
         
-        annotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: "pin")
-        self.map.addAnnotation(annotationView.annotation!)
+        self.map.addAnnotation(annotation)
         
     }
     
@@ -317,13 +333,16 @@ extension PrimaryContentViewController: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         //getting the current location and centering the map
-        let location = locations.last
-        
-        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
-        
-        self.map.setRegion(region, animated: true)
-        self.locationManager.stopUpdatingLocation()
+        if let location = locations.last {
+           
+            self.locationFound = true
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07))
+            
+            self.map.setRegion(region, animated: true)
+            self.locationManager.stopUpdatingLocation()
+            
+        }
         
         //tracking distance traveled to determine duplicate API calls.
         if startLocation == nil {
@@ -363,6 +382,7 @@ extension PrimaryContentViewController: CLLocationManagerDelegate {
 
 //MARK: Mapview delegate methods
 extension PrimaryContentViewController: MKMapViewDelegate {
+    
     //animates the appeareance of map pins
     func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {
         
@@ -388,7 +408,7 @@ extension PrimaryContentViewController: MKMapViewDelegate {
                 UIView.commitAnimations()
                 }, completion: nil)
             
-            delayInterval += 0.0625
+            delayInterval += 0.0234375
         }
     }
     
@@ -412,15 +432,26 @@ extension PrimaryContentViewController: MKMapViewDelegate {
             av!.annotation = annotation
         }
         
-        let customPointAnnotation = annotation as! CustomPointAnnotation
-        av!.image = UIImage(named:customPointAnnotation.pinCustomImageName)
+        let customAnnotation = annotation as! CustomAnnotation
+        av!.image = UIImage(named:customAnnotation.imageName!)
         
         //left callout for navigation.
-        let image = UIImage(named: "car.png")
-        let button = UIButton(type: .Custom)
-        button.frame = CGRectMake(0, 0, 40, 40)
-        button.setImage(image, forState: .Normal)
-        av?.leftCalloutAccessoryView = button
+        let navImage = UIImage(named: "car.png")
+        let navButton = UIButton(type: .Custom)
+        navButton.frame = CGRectMake(0, 0, 40, 40)
+        navButton.setImage(navImage, forState: .Normal)
+        
+        let infoButton = UIButton(type: UIButtonType.InfoLight)
+        infoButton.tintColor = self.gsColor
+        
+        av?.leftCalloutAccessoryView = infoButton
+        av?.rightCalloutAccessoryView = navButton
+        
+        infoButton.tag = 1
+        navButton.tag = 2
+        
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("updateBusinessData", object: customAnnotation.business)
         
         return av
     }
@@ -428,13 +459,32 @@ extension PrimaryContentViewController: MKMapViewDelegate {
     //brings navigation to maps
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
-        let placemark = MKPlacemark(coordinate: view.annotation!.coordinate, addressDictionary: nil)
+        if control.tag == 1 {
+            
+            PopupController
+                .create(self)
+                .customize(
+                    [
+                        .Animation(.FadeIn),
+                        .Scrollable(false),
+                        .BackgroundStyle(.BlackFilter(alpha: 0.7))
+                    ]
+                )
+                .show(DetailViewController.instance())
+        }
         
-        let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = view.annotation!.title!
-        
-        let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
-        mapItem.openInMapsWithLaunchOptions(launchOptions)
+        if control.tag == 2 {
+            
+            let placemark = MKPlacemark(coordinate: view.annotation!.coordinate, addressDictionary: nil)
+            
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = view.annotation!.title!
+            
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
+            mapItem.openInMapsWithLaunchOptions(launchOptions)
+            
+        }
+
     }
     
     
