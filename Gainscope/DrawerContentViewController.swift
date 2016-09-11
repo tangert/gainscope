@@ -11,6 +11,7 @@ import UIKit
 import NotificationCenter
 import Kingfisher
 import MapKit
+import SnapKit
 import UberRides
 
 class DrawerContentViewController: UIViewController {
@@ -84,6 +85,7 @@ extension DrawerContentViewController: UITableViewDataSource, UITableViewDelegat
         default:
             if selectedIndexPath! == indexPath {
                 selectedIndexPath = nil
+                
             } else {
                 selectedIndexPath = indexPath
             }
@@ -114,11 +116,56 @@ extension DrawerContentViewController: UITableViewDataSource, UITableViewDelegat
         tableView.separatorStyle = .None
         let cell:CustomCell? = tableView.dequeueReusableCellWithIdentifier("cell") as! CustomCell?
         
+        
+        let index = indexPath
+        let button = RideRequestButton()
+        button.colorStyle = .White
+        let ridesClient = RidesClient()
+        
+        if selectedIndexPath != nil {
+            if index == selectedIndexPath {
+                
+                cell?.addSubview(button)
+                
+                button.snp_makeConstraints { (make) -> Void in
+                    make.top.equalTo(cell!).offset(110)
+                    make.left.equalTo(cell!).offset(20)
+                    make.bottom.equalTo(cell!).offset(-20)
+                    make.right.equalTo(cell!).offset(-120)
+                }
+                
+            } else {
+                cell?.willRemoveSubview(button)
+            }
+        } else {
+            cell?.willRemoveSubview(button)
+        }
+
+        
         cell?.updateUI()
         
+        
+        var pickupLocation = CLLocation(latitude: (self.locationData.location?.coordinate.latitude)!, longitude: (self.locationData.location?.coordinate.longitude)!)
+        
         if searchBar.text != "" &&  self.searchData.count != 0 {
+
+            var dropoffLocation = CLLocation(latitude: self.searchData[indexPath.row].latitude!, longitude: self.searchData[indexPath.row].longitude!)
+            
+            let builder = RideParametersBuilder().setPickupLocation(pickupLocation).setDropoffLocation(dropoffLocation)
+//            self.ridesClient.fetchCheapestProduct(pickupLocation: pickupLocation, completion: {
+//                product, response in
+//                if let productID = product?.productID {
+//                    builder = builder.setProductID(productID)
+//                    button.rideParameters = builder.build()
+//                    button.loadRideInformation()
+//                }
+//            })
+            
             cell?.bindData(self.searchData[indexPath.row])
         }  else {
+            
+            var dropoffLocation = CLLocation(latitude: self.data[indexPath.row].latitude!, longitude: self.data[indexPath.row].longitude!)
+            
             cell?.bindData(self.data[indexPath.row])
         }
         return cell!

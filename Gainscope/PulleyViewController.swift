@@ -288,21 +288,6 @@ public class PulleyViewController: UIViewController, UIScrollViewDelegate, Pulle
     }
     
     
-    var transition: EasyTransition?
-    var setImageWithAnimate: (UIImage->Void)!
-    
-    func easyTransition(sender: AnyObject) {
-        let settingsVC = storyboard!.instantiateViewControllerWithIdentifier("Settings")
-        transition = EasyTransition(attachedViewController: settingsVC)
-        transition?.transitionDuration = 0.4
-        transition?.direction = .Right
-        transition?.margins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-        transition?.sizeMax = CGSize(width: 330, height: CGFloat.max)
-        transition?.zTransitionSize = 100
-        transition?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.4)
-        presentViewController(settingsVC, animated: true, completion: nil)
-    }
-    
     @IBOutlet weak var centerButton: UIBarButtonItem!
     
     public override func viewDidLoad() {
@@ -311,10 +296,7 @@ public class PulleyViewController: UIViewController, UIScrollViewDelegate, Pulle
         let logoImage = UIImage(named: "navbarTitle")
         self.navigationItem.titleView = UIImageView(image: logoImage)
         self.navigationItem.titleView?.tintColor = UIColor.grayColor()
-        
-        self.navigationItem.rightBarButtonItem?.action = #selector(easyTransition(_:))
-        self.navigationItem.rightBarButtonItem?.target = self
-        
+
         self.centerButton.action = #selector(centerMap(_:))
         self.centerButton.target = self
         

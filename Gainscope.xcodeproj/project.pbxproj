@@ -28,7 +28,6 @@
 		36E113121D2F1B6E00545BE0 /* GainscopeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E113111D2F1B6E00545BE0 /* GainscopeUITests.swift */; };
 		36E5FF5E1D50281400FD75B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36E5FF5D1D50281400FD75B4 /* Main.storyboard */; };
 		36EA8F4D1D7F061200334429 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA8F4C1D7F061200334429 /* CustomAnnotation.swift */; };
-		36F7BDA11D69379200A43AA2 /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36F7BDA01D69379200A43AA2 /* DetailViewController.storyboard */; };
 		36F7BDA31D6937C300A43AA2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F7BDA21D6937C300A43AA2 /* DetailViewController.swift */; };
 		3856EFC90E907C59F6E890E8 /* Pods_GainscopeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1964604D9B61A9574C2B54 /* Pods_GainscopeTests.framework */; };
 		6C0D65A3B4C65F81EC346578 /* Pods_GainscopeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90943E8BE96123A4FDC6F979 /* Pods_GainscopeUITests.framework */; };
@@ -88,7 +87,6 @@
 		36E113131D2F1B6E00545BE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36E5FF5D1D50281400FD75B4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		36EA8F4C1D7F061200334429 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
-		36F7BDA01D69379200A43AA2 /* DetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
 		36F7BDA21D6937C300A43AA2 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3C1964604D9B61A9574C2B54 /* Pods_GainscopeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GainscopeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E66CA734C9F0B0F0EE8169E /* Pods-Gainscope.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gainscope.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gainscope/Pods-Gainscope.debug.xcconfig"; sourceTree = "<group>"; };
@@ -220,9 +218,9 @@
 			children = (
 				36600DAA1D47BA3B00FE4C53 /* Pulley */,
 				361C264A1D36D9A00048B09B /* PrimaryContentViewController.swift */,
+				36F7BDA21D6937C300A43AA2 /* DetailViewController.swift */,
 				369942741D4696C300CA04B7 /* DrawerContentViewController.swift */,
 				3672F9711D7DB35C004B37C8 /* SettingsViewController.swift */,
-				36F7BDA21D6937C300A43AA2 /* DetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -231,7 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				36E5FF5D1D50281400FD75B4 /* Main.storyboard */,
-				36F7BDA01D69379200A43AA2 /* DetailViewController.storyboard */,
 				36E112FA1D2F1B6E00545BE0 /* LaunchScreen.storyboard */,
 				36E112F81D2F1B6E00545BE0 /* Assets.xcassets */,
 			);
@@ -447,7 +444,6 @@
 			files = (
 				3650DB481D67E2A8002A9538 /* Bariol_Bold.ttf in Resources */,
 				3650DB491D67E2AB002A9538 /* Bariol_Regular_Italic.ttf in Resources */,
-				36F7BDA11D69379200A43AA2 /* DetailViewController.storyboard in Resources */,
 				36E112FC1D2F1B6E00545BE0 /* LaunchScreen.storyboard in Resources */,
 				36E112F91D2F1B6E00545BE0 /* Assets.xcassets in Resources */,
 				3650DB4A1D67E2AD002A9538 /* Bariol_Regular.ttf in Resources */,

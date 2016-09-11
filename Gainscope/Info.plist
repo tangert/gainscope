@@ -46,20 +46,30 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
+        
+        <key>LSApplicationQueriesSchemes</key>
+        <array>
+            <string>uber</string>
+            <string>uberauth</string>
+        </array>
+        
+    
+    </array>
 	<key>UberClientID</key>
 	<string>[7JCFFlVSN8KRSXybg1Ijo642lv4b5k8d]</string>
 	<key>UberDisplayName</key>
 	<string>[Gainscope]</string>
 	<key>UberCallbackURIs</key>
-	<array>
+	
+    <array>
 		<dict>
 			<key>UberCallbackURIType</key>
 			<string>General</string>
 			<key>URIString</key>
-			<string>callback://localhost:8888</string>
+			<string>[http://localhost:8888]</string>
 		</dict>
 	</array>
+    
 	<key>UIAppFonts</key>
 	<array>
 		<string>Bariol_Regular_Italic.otf</string>

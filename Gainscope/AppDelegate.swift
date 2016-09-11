@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UberRides
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // To create from a Storyboard
         window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
         window?.makeKeyAndVisible()
+        
+        // If true, all requests will hit the sandbox, useful for testing
+        Configuration.setSandboxEnabled(true)
+
+        // If true, Native login will try and fallback to using Authorization Code Grant login (for privileged scopes). Otherwise will redirect to App store
+        //Configuration.setFallbackEnabled(false)
+        // Complete other setup
+ 
         return true
         
     }

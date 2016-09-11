@@ -9,6 +9,7 @@
 import Foundation
 import MapKit
 import UIKit
+import ObjectiveC
 
 class CustomAnnotation: NSObject, MKAnnotation {
     
@@ -27,5 +28,44 @@ class CustomAnnotation: NSObject, MKAnnotation {
         self.business = business
     }
     
+}
+
+private struct AssociatedKeys {
+    static var business:Business!
+}
+
+extension MKAnnotation {
     
+    var business:Business? {
+        get {
+            return (objc_getAssociatedObject(self, &AssociatedKeys.business) as? Business)!
+        }
+        set {
+            if let newValue = newValue {
+                objc_setAssociatedObject(self, &AssociatedKeys.business, newValue as Business!, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            }
+        }
+    }
+}
+
+extension MKAnnotationView {
+    private struct AssociatedKeys {
+        static var business:Business?
+    }
+    
+    var business:Business? {
+        get {
+            //this works
+            return (objc_getAssociatedObject(self, &AssociatedKeys.business) as? Business)!
+            
+        }
+        set {
+            if let newValue = newValue {
+                //print("got object")
+                objc_setAssociatedObject(self, &AssociatedKeys.business, newValue as Business!, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            } else {
+            print("did not get object")
+            }
+        }
+    }
 }

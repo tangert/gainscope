@@ -13,7 +13,8 @@ import NVActivityIndicatorView
 import AddressBookUI
 import NotificationCenter
 import AFNetworking
-import PopupController
+import EasyTransition
+import Async
 
 class PrimaryContentViewController: UIViewController {
         
@@ -24,6 +25,8 @@ class PrimaryContentViewController: UIViewController {
     let yelpToken = "yULdo-JwtBGgi1uNRvW-Yprll86x2JlU"
     let yelpTokenSecret = "wvgz30HjKdqR9Ul0qKSyDd4ASCM"
     
+    var transition: EasyTransition?
+    var setImageWithAnimate: (UIImage->Void)!
     static var sharedInstance = PrimaryContentViewController()
     let locationManager = CLLocationManager()
     
@@ -261,6 +264,8 @@ class PrimaryContentViewController: UIViewController {
         let coord = CLLocationCoordinate2DMake(business.latitude!, business.longitude!)
         let annotation = CustomAnnotation(title: business.name!, subtitle: business.distance!, coordinate: coord, imageName: query, business: business)
         
+        print(annotation.business?.name)
+        
         //Special pin images.
         
         if business.name! == "Starbucks" {
@@ -344,7 +349,6 @@ extension PrimaryContentViewController: CLLocationManagerDelegate {
             
         }
         
-        //tracking distance traveled to determine duplicate API calls.
         if startLocation == nil {
             startLocation = locations.first
         } else {
@@ -415,7 +419,7 @@ extension PrimaryContentViewController: MKMapViewDelegate {
     
     //creates the elements of the custom pin!
     func mapView(mapView: MKMapView,
-                 viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?{
+                 viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         if annotation is MKUserLocation {
             return nil
@@ -433,6 +437,7 @@ extension PrimaryContentViewController: MKMapViewDelegate {
         }
         
         let customAnnotation = annotation as! CustomAnnotation
+        
         av!.image = UIImage(named:customAnnotation.imageName!)
         
         //left callout for navigation.
@@ -447,13 +452,32 @@ extension PrimaryContentViewController: MKMapViewDelegate {
         av?.leftCalloutAccessoryView = infoButton
         av?.rightCalloutAccessoryView = navButton
         
+        // HELP PLS
+        av?.business = customAnnotation.business
+        //
+        
         infoButton.tag = 1
         navButton.tag = 2
         
-        
-        NSNotificationCenter.defaultCenter().postNotificationName("updateBusinessData", object: customAnnotation.business)
-        
         return av
+    }
+    
+
+    func showDetailView(sender: AnyObject) {
+        let detailVC = storyboard!.instantiateViewControllerWithIdentifier("DetailViewController")
+        transition = EasyTransition(attachedViewController: detailVC)
+        transition?.transitionDuration = 0.3
+        transition?.direction = .Bottom
+        
+        let leftRightMargins = ((self.parentViewController?.view.frame.width)!/(10*1.5))
+        let topBottomMargins = ((self.parentViewController?.view.frame.height)!/(10*0.5))
+
+        transition?.margins = UIEdgeInsets(top: topBottomMargins, left: leftRightMargins, bottom: topBottomMargins, right: leftRightMargins)
+
+        transition?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.4)
+        
+        detailVC.view.layer.cornerRadius = 20
+        presentViewController(detailVC, animated: true, completion: nil)
     }
     
     //brings navigation to maps
@@ -461,16 +485,12 @@ extension PrimaryContentViewController: MKMapViewDelegate {
         
         if control.tag == 1 {
             
-            PopupController
-                .create(self)
-                .customize(
-                    [
-                        .Animation(.FadeIn),
-                        .Scrollable(false),
-                        .BackgroundStyle(.BlackFilter(alpha: 0.7))
-                    ]
-                )
-                .show(DetailViewController.instance())
+            //print("Selected directly from control. \(view.business!.name!)")
+            
+            //send notification sending business data froms pecific annotation
+        NSNotificationCenter.defaultCenter().postNotificationName("updateBusinessData", object: view.business)
+            self.showDetailView(control)
+
         }
         
         if control.tag == 2 {

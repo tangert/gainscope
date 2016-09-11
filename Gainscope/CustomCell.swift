@@ -9,10 +9,15 @@
 import Foundation
 import UIKit
 import MapKit
-import PopupController
+import EasyTransition
+import Kingfisher
+import UberRides
 import Cosmos
 
 class CustomCell: UITableViewCell {
+    
+    var transition: EasyTransition?
+    var setImageWithAnimate: (UIImage->Void)!
     
     @IBOutlet weak var companyImage: UIImageView!
     @IBOutlet weak var location: UILabel!
@@ -24,13 +29,10 @@ class CustomCell: UITableViewCell {
     var latitude: Double?
     var longitude: Double?
     
-    @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var backgroundCardView: UIView!
-    
-    @IBOutlet weak var detailViewButton: UIButton!
     @IBOutlet weak var phoneButton: UIButton!
     @IBOutlet weak var navButton: UIButton!
-    
+        
      func updateUI() {
         
         backgroundCardView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
@@ -130,20 +132,6 @@ class CustomCell: UITableViewCell {
         mapItem.name = self.location.text
         mapItem.openInMapsWithLaunchOptions([MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
         
-    }
-    
-    @IBAction func showDetail(sender: AnyObject) {
-        
-        PopupController
-            .create(self.parentViewController!)
-            .customize(
-                [
-                    .Animation(.FadeIn),
-                    .Scrollable(false),
-                    .BackgroundStyle(.BlackFilter(alpha: 0.7))
-                ]
-            )
-            .show(DetailViewController.instance())
     }
     
     

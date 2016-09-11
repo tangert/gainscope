@@ -29,7 +29,6 @@ PODS:
   - Kingfisher (2.4.1)
   - NVActivityIndicatorView (2.7)
   - ObjectMapper (1.1.5)
-  - PopupController (0.1.0)
   - Realm (1.0.0):
     - Realm/Headers (= 1.0.0)
   - Realm/Headers (1.0.0)
@@ -48,7 +47,6 @@ DEPENDENCIES:
   - EasyTransition
   - Kingfisher (~> 2.4)
   - NVActivityIndicatorView
-  - PopupController
   - RealmSwift
   - SnapKit (~> 0.15.0)
   - TagListView (~> 1.0)
@@ -63,13 +61,12 @@ SPEC CHECKSUMS:
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
   NVActivityIndicatorView: dc80f18fb27ac92f0aa87246cc13dc39ed3e9ee0
   ObjectMapper: 528b1a6677a6acac7747edd508576983e76a9148
-  PopupController: fb329de274ab0cf9bf1f2758074287600082de1d
   Realm: e15cd8e7c11d3e576f628ba0b7cb855269b4991c
   RealmSwift: 3229306d020d96f83b335f87a0dcbf2cef0e6a2b
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   TagListView: 6bf4bded034c4c90b1e90d8cd3d8e1d852dba0a8
   UberRides: fa21246486f1c20b88392036501481f86e81a022
 
-PODFILE CHECKSUM: 603ef12300a611918f64dba4f5a20fc37f010b31
+PODFILE CHECKSUM: 3a9bc81ef8496591d26742340248c3756cfffd93
 
 COCOAPODS: 1.0.0

@@ -8,22 +8,14 @@
 
 import Foundation
 import UIKit
-import TagListView
-
 
 class SettingsViewController: UIViewController {
     
-    var imageDidSelected: (UIImage->Void)?
+    let segmentioViewRect = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 125)
     
     override func viewDidLoad() {
-        super.viewDidLoad()
     }
+
     
-    @IBOutlet weak var coffeeInput: UITextField!
-    @IBOutlet weak var gymsInput: UITextField!
-    @IBOutlet weak var foodInput: UITextField!
-    
-    
-    
-    
+ 
 }

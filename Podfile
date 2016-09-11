@@ -37,7 +37,6 @@ pod 'EasyTransition'
 pod 'Cosmos', '~> 1.2'
 pod 'SnapKit', '~> 0.15.0'
 pod 'NVActivityIndicatorView'
-pod 'PopupController'
 pod 'TagListView', '~> 1.0'
 
 end
