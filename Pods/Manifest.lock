@@ -1,0 +1,61 @@
+PODS:
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - AsyncSwift (1.7.2)
+  - BDBOAuth1Manager (1.6.0):
+    - AFNetworking/NSURLConnection (~> 2.6.0)
+    - AFNetworking/NSURLSession (~> 2.6.0)
+  - Cosmos (1.2.3)
+  - EasyTransition (1.2)
+  - Kingfisher (2.4.1)
+  - NVActivityIndicatorView (2.7)
+  - ObjectMapper (1.4.0)
+  - SnapKit (0.15.0)
+  - UberRides (0.5.2):
+    - ObjectMapper (~> 1.0)
+
+DEPENDENCIES:
+  - AFNetworking (~> 2.5)
+  - AsyncSwift
+  - BDBOAuth1Manager
+  - Cosmos (~> 1.2)
+  - EasyTransition
+  - Kingfisher (~> 2.4)
+  - NVActivityIndicatorView
+  - SnapKit (~> 0.15.0)
+  - UberRides
+
+SPEC CHECKSUMS:
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  AsyncSwift: 46a78bceb11f0e5bb52747f740d9692ec78d2d7c
+  BDBOAuth1Manager: cd5a5872f355ca38180d52ca2dd844f0b0c84797
+  Cosmos: efddd01b729956ad6335bc58bc92e5735a1d12a3
+  EasyTransition: 2ec063f34b6ce4b0de66498656c059489238a549
+  Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
+  NVActivityIndicatorView: dc80f18fb27ac92f0aa87246cc13dc39ed3e9ee0
+  ObjectMapper: a07ad0462c5adf014adc0f89ef04c29b626e855e
+  SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
+  UberRides: 31c962f5b150fac726789e4de80f5fd468201dd5
+
+PODFILE CHECKSUM: fd4aa9ee1a166a713acacbc626897b4f3fa9a96f
+
+COCOAPODS: 1.0.1
